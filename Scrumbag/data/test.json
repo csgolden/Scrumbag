@@ -1,0 +1,26 @@
+{
+    "projektnavn": "skabelon",
+    "startdato": "25.08.2022",
+    "slutdato": "06.10.2022",
+    
+    "Todo": [
+        {
+          "opgaven": "",
+          "startdato": "25.08.2022",
+          "slutdato": "26.08.2022",
+          "prioritet": 0,
+          "status": 0,
+          "antal timer": null,
+          "ansvarlig": ""
+        },
+        {
+          "opgaven": "",
+          "startdato": "25.08.2022",
+          "slutdato": "26.08.2022",
+          "prioritet": 0,
+          "status": 0,
+          "antal timer": null,
+          "ansvarlig": ""
+        }
+    ]
+  }
