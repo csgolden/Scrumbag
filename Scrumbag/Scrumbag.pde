@@ -25,7 +25,7 @@ void setup() {
     .setSize(400, 20)
     .addItems(split("New Load Sluk", " "))
     ;
-    
+
 }
 void draw() {
   background(#3F3798);

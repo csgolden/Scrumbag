@@ -32,7 +32,7 @@ void saveToDesktop(File selection) {
 }
 
 void save() {
-  
+  //ill fuck around and find out, men bare savetodesktop uden gemsom
 }
 
 void fileOpen(File selection) {
@@ -50,11 +50,12 @@ void fileOpen(File selection) {
     for (int i = 0; i < Todo.size(); i++) {
 
       JSONObject opgaver = Todo.getJSONObject(i);
-      //int id = opgaver.getInt("id");
       opgaveNavn = append(opgaveNavn, opgaver.getString("opgaven"));
       startDato = append(startDato, opgaver.getString("startdato"));
       startDato = append(startDato, opgaver.getString("slutdato"));
     }
     printArray(opgaveNavn);
+    printArray(startDato);
+    printArray(slutDato);
   }
 }
