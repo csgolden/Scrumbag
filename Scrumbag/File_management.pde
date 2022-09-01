@@ -4,21 +4,33 @@ void saveToDesktop(File selection) {
   if (selection == null) {
     println("Window was closed or the user hit cancel.");
   } else {
-    println("User selected " + selection.getAbsolutePath());
-    createOutput(selection.getAbsolutePath());
+    todo = new JSONArray();
+
+    for (int i = 0; i < opgaveNavn.length; i++) {
+
+      JSONObject Save = new JSONObject();
+
+      Save.setInt("id", i);
+      Save.setString("opgave", opgaveNavn[i]);
+      Save.setString("startdato", Startdato[i]);
+      Save.setString("name", Slutdato[i]);
+
+      todo.setJSONObject(i, Save);
+    }
+
+    saveJSONArray(todo, "selection.getAbsolutePath()"+".json");
+    //createOutput(selection.getAbsolutePath());
   }
 }
 
-void save(File selection){
-  
+void save(File selection) {
 }
 
-void fileOpen(File selection){
+void fileOpen(File selection) {
   if (selection == null) {
     println("Window was closed or the user hit cancel.");
   } else {
     println("User selected " + selection.getAbsolutePath());
-    
   }
 }
 
@@ -27,16 +39,16 @@ void fileOpen(File selection){
 
 /*
 // values = loadJSONArray("data.json");
-
-  for (int i = 0; i < values.size(); i++) {
-    
-    JSONObject animal = values.getJSONObject(i); 
-
-    int id = animal.getInt("id");
-    String species = animal.getString("species");
-    String name = animal.getString("name");
-
-    println(id + ", " + species + ", " + name);
-  }
-  
-  */
+ 
+ for (int i = 0; i < values.size(); i++) {
+ 
+ JSONObject animal = values.getJSONObject(i);
+ 
+ int id = animal.getInt("id");
+ String species = animal.getString("species");
+ String name = animal.getString("name");
+ 
+ println(id + ", " + species + ", " + name);
+ }
+ 
+ */

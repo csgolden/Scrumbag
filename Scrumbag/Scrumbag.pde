@@ -1,9 +1,9 @@
 import controlP5.*;
-
+JSONArray todo;
 //https://processing.org/reference/JSONArray.html
-String[] opgaveNavn = new String[0];
-String[] Startdato = new String[0];
-String[] Slutdato = new String[0];
+String[] opgaveNavn = {"skabelon"};
+String[] Startdato = {"25.08.2022"};
+String[] Slutdato = {"25.08.2022"};
 
 
 void setup() {
