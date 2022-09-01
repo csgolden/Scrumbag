@@ -1,5 +1,9 @@
 import controlP5.*;
 
+String[] opgaveNavn = new String[0];
+String[] Startdato = new String[0];
+String[] Slutdato = new String[0];
+
 
 void setup() {
   size(1280, 720);
