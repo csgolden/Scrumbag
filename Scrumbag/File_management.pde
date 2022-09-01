@@ -1,6 +1,4 @@
-void setup() {
-  selectOutput("Select a file to write to:", "saveToDesktop");
-}
+//selectOutput("Select a file to write to:", "saveToDesktop");
 
 void saveToDesktop(File selection) {
   if (selection == null) {
