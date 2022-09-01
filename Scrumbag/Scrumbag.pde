@@ -1,9 +1,17 @@
 import controlP5.*;
-JSONArray todo;
+
 //https://processing.org/reference/JSONArray.html
-String[] opgaveNavn = {"skabelon"};
-String[] Startdato = {"25.08.2022"};
-String[] Slutdato = {"25.08.2022"};
+String[] opgaveNavn = {"test", "skabelon"};
+String[] ansvarlig = {"idk", "idk"};
+String[] startDato = {"25.08.2022", "25.08.2022"};
+String[] slutDato = {"25.08.2022", "25.08.2022"};
+int[] prioritet = {0, 0};
+int[] status = {0, 0};
+int[] antalTimer = {0, 0};
+String projektnavn;
+// kan sættes automatisk bare ved at tage første element i startdato, og sidste element i slutdato
+String startdato = startDato[0];
+String slutdato = slutDato[slutDato.length-1];
 
 
 void setup() {
@@ -17,6 +25,7 @@ void setup() {
     .setSize(400, 20)
     .addItems(split("New Load Sluk", " "))
     ;
+    
 }
 void draw() {
   background(#3F3798);

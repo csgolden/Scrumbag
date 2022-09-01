@@ -5,7 +5,7 @@
     
     "Todo": [
         {
-          "opgaven": "",
+          "opgaven": "test",
           "startdato": "25.08.2022",
           "slutdato": "26.08.2022",
           "prioritet": 0,
@@ -14,7 +14,7 @@
           "ansvarlig": ""
         },
         {
-          "opgaven": "",
+          "opgaven": "test",
           "startdato": "25.08.2022",
           "slutdato": "26.08.2022",
           "prioritet": 0,
@@ -23,4 +23,4 @@
           "ansvarlig": ""
         }
     ]
-  }
+}
