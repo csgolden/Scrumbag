@@ -27,12 +27,35 @@ void saveAs(File selection) {
     //println(Todo + " " + Todo.size());
     saveJSONObject(Save, selection.getAbsolutePath()+".json");
     //createOutput(selection.getAbsolutePath()+".json");
-    println(Save);
+    println(selection.getAbsolutePath()+".json");
   }
 }
 
 void save() {
   //ill fuck around and find out, men bare savetodesktop uden gemsom
+  JSONObject Save = new JSONObject();
+    JSONArray Todo = new JSONArray();
+    Save = Save.setJSONArray("Todo", Todo);
+    Save.setString("startdato", startdato);
+    Save.setString("slutdato", slutdato);
+    
+    for (int i = 0; i < opgaveNavn.length; i++) {
+      JSONObject opgaver = new JSONObject();
+      //opgaver.setInt("id", i);
+      opgaver.setString("opgaven", opgaveNavn[i]);
+      opgaver.setString("startdato", startDato[i]);
+      opgaver.setString("slutdato", slutDato[i]);
+      opgaver.setString("prioritet", slutDato[i]);
+      opgaver.setInt("status", status[i]);
+      opgaver.setInt("antal timer", antalTimer[i]);
+      opgaver.setString("ansvarlig", ansvarlig[i]);
+      Todo.setJSONObject(i, opgaver);
+    }
+    //println(Todo + " " + Todo.size());
+    saveJSONObject(Save, currentlyOpen);
+    //createOutput(selection.getAbsolutePath()+".json");
+    println(Save);
+  
 }
 
 void fileOpen(File selection) {
@@ -46,6 +69,7 @@ void fileOpen(File selection) {
     projektnavn = selection.getName();
     JSONObject Save = loadJSONObject(selection.getAbsolutePath());
     JSONArray Todo = Save.getJSONArray("Todo");
+    currentlyOpen = selection.getAbsolutePath();
 
     for (int i = 0; i < Todo.size(); i++) {
 
