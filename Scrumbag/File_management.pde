@@ -1,6 +1,6 @@
 //selectOutput("Select a file to write to:", "saveToDesktop");
 
-void saveToDesktop(File selection) {
+void saveAs(File selection) {
   if (selection == null) {
     println("Window was closed or the user hit cancel.");
   } else {
