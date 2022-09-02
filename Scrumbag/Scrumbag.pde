@@ -1,18 +1,18 @@
 import controlP5.*;
 
 //https://processing.org/reference/JSONArray.html
-String[] opgaveNavn = {"test2test", "skabelon"};
-String[] ansvarlig = {"idk", "idk"};
-String[] startDato = {"25.08.2022", "25.08.2022"};
-String[] slutDato = {"25.08.2022", "25.08.2022"};
-int[] prioritet = {0, 0};
-int[] status = {0, 0};
-int[] antalTimer = {0, 0};
+String[] opgaveNavn = {" "};
+String[] ansvarlig = {" "};
+String[] startDato = {" "};
+String[] slutDato = {" "};
+int[] prioritet = {0};
+int[] status = {0};
+int[] antalTimer = {0};
 String projektnavn;
 // kan sættes automatisk bare ved at tage første element i startdato, og sidste element i slutdato
 String startdato = startDato[0];
 String slutdato = slutDato[slutDato.length-1];
-String currentlyOpen = "/Users/lukasnadj/Documents/Scrumbag/Scrumbag/data/Untitled.json";
+String currentlyOpen = "";
 
 void setup() {
   size(1280, 720);
@@ -25,7 +25,7 @@ void setup() {
     .setSize(400, 20)
     .addItems(split("New Load Sluk", " "))
     ;
-  //selectOutput("Select a file to write to:", "saveAs");   //gem som done
+  selectOutput("Select a file to write to:", "saveAs");   //gem som done
   //save();  //gem ændringerne i det åbne projekt
   //selectInput("Select a file: ", "fileOpen");   //åben et projekt done
 }
