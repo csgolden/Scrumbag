@@ -42,11 +42,6 @@ void bar(int n) {
   } else if (n==1) {
     selectInput("Select a file: ", "fileOpen");   //åben et projekt done
   } else if (n==2) {
-    
-    //exit();
+    exit();
   }
-}
-
-void keyPressed(){
-  save();
 }
