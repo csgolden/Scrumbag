@@ -1,4 +1,5 @@
 {
+  "slutdato": "",
   "Todo": [{
     "slutdato": " ",
     "prioritet": " ",
@@ -8,5 +9,6 @@
     "opgaven": "test",
     "status": 0
   }],
-  "projektnavn": "Untitled"
+  "projektnavn": "hej",
+  "startdato": " "
 }

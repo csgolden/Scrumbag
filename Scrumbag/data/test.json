@@ -1,25 +1,4 @@
 {
-  "slutdato": "25.08.2022",
-  "Todo": [
-    {
-      "slutdato": "25.08.2022",
-      "prioritet": "25.08.2022",
-      "startdato": "25.08.2022",
-      "antal timer": 0,
-      "ansvarlig": "idk",
-      "opgaven": "test",
-      "status": 0
-    },
-    {
-      "slutdato": "25.08.2022",
-      "prioritet": "25.08.2022",
-      "startdato": "25.08.2022",
-      "antal timer": 0,
-      "ansvarlig": "idk",
-      "opgaven": "skabelon",
-      "status": 0
-    }
-  ],
-  "projektnavn": "test",
-  "startdato": "25.08.2022"
+  "Todo": [],
+  "projektnavn": "test"
 }
