@@ -12,7 +12,7 @@ String projektnavn = "et eller andet";
 // kan sættes automatisk bare ved at tage første element i startdato, og sidste element i slutdato
 String startdato;
 String slutdato;
-String currentlyOpen = "/Users/lukasnadj/Documents/Scrumbag/Scrumbag/data/Untitled.json";
+String currentlyOpen = " ";
 
 void setup() {
   size(1280, 720);

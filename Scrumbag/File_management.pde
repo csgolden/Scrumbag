@@ -143,6 +143,7 @@ void newFile(File selection) {
 }
 
 void nyOpgave(int index) {
+  //for nu er tanken at man kan tilføje opgaver specifikke steder. men ellers er det bare at skifte til append.
   opgaveNavn = splice(opgaveNavn, "", index-1);
   startDato = splice(startDato, "", index-1);
   slutDato = splice(slutDato, "", index-1);
@@ -150,4 +151,8 @@ void nyOpgave(int index) {
   prioritet = splice(prioritet, 0, index-1);
   antalTimer = splice(antalTimer, 0, index-1);
   status = splice(status, 0, index-1);
+}
+
+void sletOpgave(int index){
+//senere
 }
