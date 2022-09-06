@@ -47,12 +47,12 @@ void save() {
   Save = Save.setJSONArray("Todo", Todo);
   Save.setString("startdato", startdato);
   Save.setString("slutdato", slutdato);
-  println(opgaveNavn.length);
-  if (opgaveNavn.length!=0) {
+  println("----- ", opgaveNavn.length, slutDato.length);
+  if (opgaveNavn.length>0) {
     startdato = startDato[0];
-    slutdato = slutDato[slutDato.length];
+    slutdato = slutDato[slutDato.length-1];
   }
-  
+
   for (int i = 0; i < opgaveNavn.length; i++) {
     JSONObject opgaver = new JSONObject();
     //opgaver.setInt("id", i);
@@ -65,14 +65,16 @@ void save() {
     opgaver.setString("ansvarlig", ansvarlig[i]);
     Todo.setJSONObject(i, opgaver);
   }
-  
+
   //println(Todo + " " + Todo.size());
   saveJSONObject(Save, currentlyOpen);
   println(Save);
+  
 }
 
 void fileOpen(File selection) {
   //tilføj automatisk gem af gammelt dokument? bare void save()?
+  save();
   if (selection == null) {
     println("Window was closed or the user hit cancel.");
   } else {
@@ -96,7 +98,7 @@ void fileOpen(File selection) {
       JSONObject opgaver = Todo.getJSONObject(i);
       opgaveNavn = append(opgaveNavn, opgaver.getString("opgaven"));
       startDato = append(startDato, opgaver.getString("startdato"));
-      startDato = append(startDato, opgaver.getString("slutdato"));
+      slutDato = append(slutDato, opgaver.getString("slutdato"));
     }
     printArray(opgaveNavn);
     printArray(startDato);
@@ -118,7 +120,7 @@ void newFile(File selection) {
     JSONObject Save = new JSONObject();
     JSONArray Todo = new JSONArray();
     Save = Save.setJSONArray("Todo", Todo);
-    
+
     if (opgaveNavn.length!=0) {
       startdato = startDato[0];
       slutdato = slutDato[slutDato.length-1];
@@ -126,7 +128,7 @@ void newFile(File selection) {
       startdato = " ";
       slutdato = " ";
     }
-    
+
     projektnavn = selection.getName();
     Save.setString("projektnavn", selection.getName());
     Save.setString("startdato", startdato);
@@ -138,4 +140,14 @@ void newFile(File selection) {
     println(selection.getAbsolutePath()+".json");
     println(Save);
   }
+}
+
+void nyOpgave(int index) {
+  opgaveNavn = splice(opgaveNavn, "", index-1);
+  startDato = splice(startDato, "", index-1);
+  slutDato = splice(slutDato, "", index-1);
+  ansvarlig = splice(ansvarlig, "", index-1);
+  prioritet = splice(prioritet, 0, index-1);
+  antalTimer = splice(antalTimer, 0, index-1);
+  status = splice(status, 0, index-1);
 }

@@ -1,4 +1,61 @@
 {
-  "Todo": [],
-  "projektnavn": "test"
+  "slutdato": "",
+  "Todo": [
+    {
+      "slutdato": "",
+      "prioritet": "",
+      "startdato": "",
+      "antal timer": 0,
+      "ansvarlig": "",
+      "opgaven": "",
+      "status": 0
+    },
+    {
+      "slutdato": "",
+      "prioritet": "",
+      "startdato": "",
+      "antal timer": 0,
+      "ansvarlig": "",
+      "opgaven": "",
+      "status": 0
+    },
+    {
+      "slutdato": "",
+      "prioritet": "",
+      "startdato": "",
+      "antal timer": 0,
+      "ansvarlig": "",
+      "opgaven": "",
+      "status": 0
+    },
+    {
+      "slutdato": "",
+      "prioritet": "",
+      "startdato": "",
+      "antal timer": 0,
+      "ansvarlig": "",
+      "opgaven": "",
+      "status": 0
+    },
+    {
+      "slutdato": "",
+      "prioritet": "",
+      "startdato": "",
+      "antal timer": 0,
+      "ansvarlig": "",
+      "opgaven": "",
+      "status": 0
+    },
+    {
+      "slutdato": "",
+      "prioritet": "",
+      "startdato": "",
+      "antal timer": 0,
+      "ansvarlig": "",
+      "opgaven": "",
+      "status": 0
+    }
+  ],
+  "projektnavn": "test",
+  "startdato": ""
 }
