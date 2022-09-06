@@ -9,7 +9,6 @@ int[] prioritet = {0};
 int[] status = {0};
 int[] antalTimer = {0};
 String projektnavn = "et eller andet";
-// kan sættes automatisk bare ved at tage første element i startdato, og sidste element i slutdato
 String startdato;
 String slutdato;
 String currentlyOpen = " ";
