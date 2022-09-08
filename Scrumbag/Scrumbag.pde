@@ -12,7 +12,7 @@ String projektnavn = "et eller andet";
 String startdato;
 String slutdato;
 String currentlyOpen = " ";
-
+//PRUT
 void setup() {
   size(1280, 720);
   fill(255, 52, 242);
