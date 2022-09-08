@@ -25,14 +25,12 @@ void saveAs(File selection) {
       opgaver.setString("slutdato", slutDato[i]);
       opgaver.setString("prioritet", slutDato[i]);
       opgaver.setInt("status", status[i]);
-      opgaver.setInt("antal timer", antalTimer[i]);
+      opgaver.setString("antal timer", antalTimer[i]);
       opgaver.setString("ansvarlig", ansvarlig[i]);
       Todo.setJSONObject(i, opgaver);
     }
-    //println(Todo + " " + Todo.size());
     saveJSONObject(Save, selection.getAbsolutePath()+".json");
     //createOutput(selection.getAbsolutePath()+".json");
-    println(selection.getAbsolutePath()+".json");
   }
 }
 
@@ -41,32 +39,34 @@ void save() {
   if (currentlyOpen.equals(" ")) {
     return;
   }
-  //ill fuck around and find out, men bare savetodesktop uden gemsom
+  
   JSONObject Save = loadJSONObject(currentlyOpen);
   JSONArray Todo = Save.getJSONArray("Todo");
   Save = Save.setJSONArray("Todo", Todo);
   Save.setString("startdato", startdato);
   Save.setString("slutdato", slutdato);
-  println("----- ", opgaveNavn.length, slutDato.length);
   if (opgaveNavn.length>0) {
     startdato = startDato[0];
     slutdato = slutDato[slutDato.length-1];
   }
-
+  
+  try{
   for (int i = 0; i < opgaveNavn.length; i++) {
     JSONObject opgaver = new JSONObject();
     //opgaver.setInt("id", i);
+    
     opgaver.setString("opgaven", opgaveNavn[i]);
     opgaver.setString("startdato", startDato[i]);
     opgaver.setString("slutdato", slutDato[i]);
     opgaver.setString("prioritet", slutDato[i]);
     opgaver.setInt("status", status[i]);
-    opgaver.setInt("antal timer", antalTimer[i]);
+    opgaver.setString("antal timer", antalTimer[i]);
     opgaver.setString("ansvarlig", ansvarlig[i]);
-    Todo.setJSONObject(i, opgaver);
+    
+   Todo.setJSONObject(i, opgaver);  
   }
-
-  //println(Todo + " " + Todo.size());
+  } catch (ArrayIndexOutOfBoundsException e){
+  }
   saveJSONObject(Save, currentlyOpen);
   println(Save);
   
@@ -84,7 +84,7 @@ void fileOpen(File selection) {
     slutDato = new String[0];
     prioritet = new int[0];
     status = new int[0];
-    antalTimer = new int[0];
+    antalTimer = new String[0];
     projektnavn = selection.getName();
     JSONObject Save = loadJSONObject(selection.getAbsolutePath());
     JSONArray Todo = Save.getJSONArray("Todo");
@@ -116,12 +116,12 @@ void newFile(File selection) {
     slutDato = new String[0];
     prioritet = new int[0];
     status = new int[0];
-    antalTimer = new int[0];
+    antalTimer = new String[0];
     JSONObject Save = new JSONObject();
     JSONArray Todo = new JSONArray();
     Save = Save.setJSONArray("Todo", Todo);
 
-    if (opgaveNavn.length!=0) {
+    if (opgaveNavn.length>0) {
       startdato = startDato[0];
       slutdato = slutDato[slutDato.length-1];
     } else {
@@ -134,22 +134,22 @@ void newFile(File selection) {
     Save.setString("startdato", startdato);
     Save.setString("slutdato", slutdato);
 
-    //println(Todo + " " + Todo.size());
     saveJSONObject(Save, selection.getAbsolutePath()+".json");
     //createOutput(selection.getAbsolutePath()+".json");
-    println(selection.getAbsolutePath()+".json");
+
     println(Save);
   }
 }
 
 void nyOpgave(int index) {
   //for nu er tanken at man kan tilføje opgaver specifikke steder. men ellers er det bare at skifte til append.
+  
   opgaveNavn = splice(opgaveNavn, "", index-1);
   startDato = splice(startDato, "", index-1);
   slutDato = splice(slutDato, "", index-1);
   ansvarlig = splice(ansvarlig, "", index-1);
   prioritet = splice(prioritet, 0, index-1);
-  antalTimer = splice(antalTimer, 0, index-1);
+  antalTimer = splice(antalTimer, "", index-1);
   status = splice(status, 0, index-1);
 }
 
