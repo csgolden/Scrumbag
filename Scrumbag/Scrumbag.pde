@@ -15,7 +15,7 @@ String currentlyOpen = " ";
 //PRUT
 void setup() {
   size(1280, 720);
-  fill(255, 52, 242);
+  fill(255,   52, 242);
 
   ControlP5 cp5;
   cp5 = new ControlP5(this);
