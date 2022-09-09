@@ -1,7 +1,7 @@
 import controlP5.*;
 
 //https://processing.org/reference/JSONArray.html
-String[] opgaveNavn = {"test", " "};
+String[] opgaveNavn = {"test"};
 String[] ansvarlig = {" "};
 String[] startDato = {" "};
 String[] slutDato = {" "};
@@ -16,48 +16,51 @@ String slutdato;
 String currentlyOpen = " ";
 PVector selected = new PVector(0, 0);
 
+String[] muligheder = {"Passiv", "Aktiv", "Fuldført"};
+Boolean dropDown = false;
+int dropdownx;
+int dropdowny;
+
+int state = 0;
+int Scroll = 0;
+int start = 50;
+
+ButtonBar b;
+
 void setup() {
   size(1280, 720);
-  fill(255,   52, 242);
-  
-  for(int i = 0; i<50; i++){
-    nyOpgave(opgaveNavn.length);
-  }
-  
+  fill(255, 52, 242);
+
 
   ControlP5 cp5;
   cp5 = new ControlP5(this);
-  ButtonBar b = cp5.addButtonBar("bar")
+  b = cp5.addButtonBar("bar")
     .setPosition(width/2.75, height/1.5)
     .setSize(400, 20)
     .addItems(split("New Load Sluk", " "))
     ;
-
   //selectOutput("Select a file to write to:", "saveAs");   //gem som done
   //save();  //gem ændringerne i det åbne projekt
 }
 void draw() {
-  background(#3F3798);
-  fill(255, 52, 246);
-  textSize(256);
   coolioso = new String[][]{opgaveNavn, ansvarlig, startDato, slutDato, antalTimer};
-  text("Scrumbag", width/19, height/2);
-  
+  strokeWeight(1);
+  background(255);
+
+
+
+
+  if (state==0) {
+    Forside();
+  } else if (state==1) {
+    Gant();
+  } else {
+    //Agile();
+  }
   textSize(12);
-  try{
-  for(int i = 0; i<opgaveNavn.length;i++){
-  
-  text(coolioso[0][i], width/2, height/2+20+i*20);
-  }
-  } catch (ArrayIndexOutOfBoundsException e){
-  }
-  /*
-  println(" ", selected.x, "awd", selected.y, opgaveNavn.length);
-  */
-  //println(selected.y);
-  printArray(opgaveNavn);
-  
 }
+
+
 
 void bar(int n) {
   if (n==0) {
@@ -69,34 +72,71 @@ void bar(int n) {
   }
 }
 
-/*
-void keyPressed(){
-  if(key==ENTER&&int(selected.y+1.0)<opgaveNavn.length){
-    selected = new PVector(selected.x, selected.y+1.0);
-  }
-  if(key=='$'&&int(selected.y)>0){
-    selected = new PVector(selected.x, selected.y-1.0);
-  }
 
-  try {  
-  if ((key >= '!' && key <= 'z'|| key == ' '||key >= 128 && key <= 255)&&key!='$'  ) {  // 12865
-    
-    coolioso[int(selected.x)][int(selected.y)] = coolioso[int(selected.x)][int(selected.y)] + key;
-    // lånt kode slutter 
-  } else if (key==BACKSPACE) {  //   opsummering: delete key
-    
-    // .substring kopiere tekstfelt, og fjern karaktere fra begyndelse og/eller slutningen
-    // .length returnere mængden af karaktere i dets string som int. vi minuser med 1, for at slette et tegn
-      coolioso[int(selected.x)][int(selected.y)] = coolioso[int(selected.x)][int(selected.y)].substring(0, coolioso[int(selected.x)][int(selected.y)].length()-1);
-    
-    
+void keyPressed() {
+  Float[] lengths = {385.0, 0.0, 106.5, 106.5, 0.0, 0.0, 0.0, 0.0};
+  if (selected.x>=5) {
+    return;
   }
-  } 
-  catch(StringIndexOutOfBoundsException e) {  // hvis det ville give den error message out of bounds
-      coolioso[int(selected.x)][int(selected.y)] = "";
+  //textsize skal sættes til 14 mens den checker textWidth
+  textSize(14);
+  try {
+    if ((key >= '!' && key <= 'z'|| key == ' '||key >= 128 && key <= 255)&&key!='$'&&int(textWidth(coolioso[int(selected.x)][int(selected.y)]))+17<lengths[int(selected.x)]&&state==1) {  // 12865
+
+      coolioso[int(selected.x)][int(selected.y)] = coolioso[int(selected.x)][int(selected.y)] + key;
+      // lånt kode slutter
+    } else if (key==BACKSPACE) {  //   opsummering: delete key
+
+      // .substring kopiere tekstfelt, og fjern karaktere fra begyndelse og/eller slutningen
+      // .length returnere mængden af karaktere i dets string som int. vi minuser med 1, for at slette et tegn
+      coolioso[int(selected.x)][int(selected.y)] = coolioso[int(selected.x)][int(selected.y)].substring(0, coolioso[int(selected.x)][int(selected.y)].length()-1);
     }
   }
-  
-  */
+  catch(StringIndexOutOfBoundsException e) {  // hvis det ville give den error message out of bounds
+  }
+}
 
+void mousePressed() {
   
+  if(state==1){
+  for (int x = 0; x<3; x++) {
+    if (mouseY>dropdowny-Scroll+26*x&&mouseY<dropdowny-Scroll+26+26*x&&mouseX>1155&&mouseX<width-20&&dropDown) {
+      status[int(selected.y)] = x;
+      dropDown = false;
+      return;
+    }
+  }
+  for (int i  = 0; i<opgaveNavn.length; i++) {
+    if (mouseY>33*i-Scroll+start&&mouseY<33*i-Scroll+start+33&&mouseX<385) {
+      //klikkede på opgaveNavn
+      selected = new PVector(0, i);
+    } else if (mouseY>33*i-Scroll+start&&mouseY<33*i-Scroll+start+33&&mouseX<491.5&&mouseX>385) {
+      //klikkede på startdato
+      selected = new PVector(2, i);
+    } else if (mouseY>33*i-Scroll+start&&mouseY<33*i-Scroll+start+33&&mouseX<594.5&&mouseX>491.5) {
+      //klikkede på slutDato
+      selected = new PVector(3, i);
+    } else if (mouseY>33*i-Scroll+start&&mouseY<33*i-Scroll+start+33&&mouseX>1153&&mouseX<width-20) {
+      //klikkede på status
+      if (dropDown) {
+        dropDown = false;
+      } else {
+        dropDown = true;
+        dropdownx = 1153;
+        dropdowny = 33*i+start+33;
+        selected = new PVector(5, i);
+      }
+      return;
+    }
+  }
+  dropDown = false;
+  }
+}
+
+void mouseWheel(MouseEvent event) {
+  dropDown = false;
+  float e = event.getCount();
+  if(Scroll+e*3>-3){
+  Scroll += e*3;
+  }
+}

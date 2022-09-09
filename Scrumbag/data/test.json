@@ -1,5 +1,4 @@
 {
-  "slutdato": "",
   "Todo": [
     {
       "slutdato": "",
@@ -56,6 +55,5 @@
       "status": 0
     }
   ],
-  "projektnavn": "test",
-  "startdato": ""
+  "projektnavn": "test"
 }

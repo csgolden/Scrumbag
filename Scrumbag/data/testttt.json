@@ -3,7 +3,7 @@
   "Todo": [
     {
       "slutdato": "",
-      "prioritet": "",
+      "prioritet": 0,
       "startdato": "",
       "antal timer": 0,
       "ansvarlig": "",
@@ -12,7 +12,7 @@
     },
     {
       "slutdato": "",
-      "prioritet": "",
+      "prioritet": 0,
       "startdato": "",
       "antal timer": 0,
       "ansvarlig": "",
@@ -21,7 +21,7 @@
     },
     {
       "slutdato": "",
-      "prioritet": "",
+      "prioritet": 0,
       "startdato": "",
       "antal timer": 0,
       "ansvarlig": "",
@@ -30,7 +30,7 @@
     },
     {
       "slutdato": "",
-      "prioritet": "",
+      "prioritet": 0,
       "startdato": "",
       "antal timer": 0,
       "ansvarlig": "",
@@ -39,7 +39,7 @@
     },
     {
       "slutdato": "",
-      "prioritet": "",
+      "prioritet": 0,
       "startdato": "",
       "antal timer": 0,
       "ansvarlig": "",

@@ -23,7 +23,7 @@ void saveAs(File selection) {
       opgaver.setString("opgaven", opgaveNavn[i]);
       opgaver.setString("startdato", startDato[i]);
       opgaver.setString("slutdato", slutDato[i]);
-      opgaver.setString("prioritet", slutDato[i]);
+      opgaver.setInt("prioritet", prioritet[i]);
       opgaver.setInt("status", status[i]);
       opgaver.setString("antal timer", antalTimer[i]);
       opgaver.setString("ansvarlig", ansvarlig[i]);
@@ -58,7 +58,7 @@ void save() {
     opgaver.setString("opgaven", opgaveNavn[i]);
     opgaver.setString("startdato", startDato[i]);
     opgaver.setString("slutdato", slutDato[i]);
-    opgaver.setString("prioritet", slutDato[i]);
+    opgaver.setInt("prioritet", prioritet[i]);
     opgaver.setInt("status", status[i]);
     opgaver.setString("antal timer", antalTimer[i]);
     opgaver.setString("ansvarlig", ansvarlig[i]);
@@ -68,8 +68,7 @@ void save() {
   } catch (ArrayIndexOutOfBoundsException e){
   }
   saveJSONObject(Save, currentlyOpen);
-  println(Save);
-  
+  //println(Save);
 }
 
 void fileOpen(File selection) {
@@ -99,11 +98,17 @@ void fileOpen(File selection) {
       opgaveNavn = append(opgaveNavn, opgaver.getString("opgaven"));
       startDato = append(startDato, opgaver.getString("startdato"));
       slutDato = append(slutDato, opgaver.getString("slutdato"));
+      ansvarlig = append(ansvarlig, opgaver.getString("ansvarlig"));
+      prioritet = append(prioritet, opgaver.getInt("prioritet"));
+      status = append(status, opgaver.getInt("status"));
+      antalTimer = append(antalTimer, opgaver.getString("antalTimer"));
+     
     }
-    printArray(opgaveNavn);
-    printArray(startDato);
-    printArray(slutDato);
+    //printArray(opgaveNavn);
+    //printArray(startDato);
+    //printArray(slutDato);
   }
+  state = 1;
 }
 
 void newFile(File selection) {
@@ -137,8 +142,9 @@ void newFile(File selection) {
     saveJSONObject(Save, selection.getAbsolutePath()+".json");
     //createOutput(selection.getAbsolutePath()+".json");
 
-    println(Save);
+    //println(Save);
   }
+  state = 1;
 }
 
 void nyOpgave(int index) {
