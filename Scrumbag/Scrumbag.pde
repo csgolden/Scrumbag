@@ -11,13 +11,14 @@ String[] antalTimer = {"0"};
 
 String[][] coolioso = {opgaveNavn, ansvarlig, startDato, slutDato, antalTimer};
 String projektnavn = "et eller andet";
-String startdato;
-String slutdato;
+String startdato = "";
+String slutdato = "";
 String currentlyOpen = " ";
 PVector selected = new PVector(0, 0);
 
 String[] muligheder = {"Passiv", "Aktiv", "Fuldført"};
 Boolean dropDown = false;
+Boolean hklik = false;
 int dropdownx;
 int dropdowny;
 
@@ -45,10 +46,6 @@ void setup() {
 void draw() {
   coolioso = new String[][]{opgaveNavn, ansvarlig, startDato, slutDato, antalTimer};
   strokeWeight(1);
-  background(255);
-
-
-
 
   if (state==0) {
     Forside();
@@ -74,6 +71,7 @@ void bar(int n) {
 
 
 void keyPressed() {
+
   Float[] lengths = {385.0, 0.0, 106.5, 106.5, 0.0, 0.0, 0.0, 0.0};
   if (selected.x>=5) {
     return;
@@ -97,46 +95,73 @@ void keyPressed() {
 }
 
 void mousePressed() {
-  
-  if(state==1){
-  for (int x = 0; x<3; x++) {
-    if (mouseY>dropdowny-Scroll+26*x&&mouseY<dropdowny-Scroll+26+26*x&&mouseX>1155&&mouseX<width-20&&dropDown) {
-      status[int(selected.y)] = x;
-      dropDown = false;
-      return;
-    }
-  }
-  for (int i  = 0; i<opgaveNavn.length; i++) {
-    if (mouseY>33*i-Scroll+start&&mouseY<33*i-Scroll+start+33&&mouseX<385) {
-      //klikkede på opgaveNavn
-      selected = new PVector(0, i);
-    } else if (mouseY>33*i-Scroll+start&&mouseY<33*i-Scroll+start+33&&mouseX<491.5&&mouseX>385) {
-      //klikkede på startdato
-      selected = new PVector(2, i);
-    } else if (mouseY>33*i-Scroll+start&&mouseY<33*i-Scroll+start+33&&mouseX<594.5&&mouseX>491.5) {
-      //klikkede på slutDato
-      selected = new PVector(3, i);
-    } else if (mouseY>33*i-Scroll+start&&mouseY<33*i-Scroll+start+33&&mouseX>1153&&mouseX<width-20) {
-      //klikkede på status
-      if (dropDown) {
-        dropDown = false;
-      } else {
-        dropDown = true;
-        dropdownx = 1153;
-        dropdowny = 33*i+start+33;
-        selected = new PVector(5, i);
+
+  if (state==1) {
+    for (int x = 0; x<muligheder.length; x++) {
+      if(dropDown){
+      if(hklik){
+        if(mouseY>dropdowny+26*x&&mouseY<dropdowny+26+26*x&&mouseX>dropdownx&&mouseX<dropdownx+105){
+        hklik = false;
+          if (x==0) {
+            sletOpgave(int(selected.y));
+          } else if (x==1) {
+            nyOpgave(int(selected.y)+1);
+          } else {
+            nyOpgave(int(selected.y)+2);
+          }
+
+
+          dropDown = false;
+          return;
+        }
+      } else if (mouseY>dropdowny-Scroll+26*x&&mouseY<dropdowny-Scroll+26+26*x&&mouseX>1155&&mouseX<width-20) {
+        
+          status[int(selected.y)] = x;
+          dropDown = false;
+          return;
+        
       }
-      return;
+      }
     }
-  }
-  dropDown = false;
+    hklik = false;
+    for (int i  = 0; i<opgaveNavn.length; i++) {
+      if (mouseButton == RIGHT&&mouseY>33*i-Scroll+start&&mouseY<33*i-Scroll+start+33) {
+        hklik = true;
+        dropDown = true;
+        dropdownx = mouseX;
+        dropdowny = mouseY;
+        selected = new PVector(5, i);
+        return;
+      } else if (mouseY>33*i-Scroll+start&&mouseY<33*i-Scroll+start+33&&mouseX<385) {
+        //klikkede på opgaveNavn
+        selected = new PVector(0, i);
+      } else if (mouseY>33*i-Scroll+start&&mouseY<33*i-Scroll+start+33&&mouseX<491.5&&mouseX>385) {
+        //klikkede på startdato
+        selected = new PVector(2, i);
+      } else if (mouseY>33*i-Scroll+start&&mouseY<33*i-Scroll+start+33&&mouseX<594.5&&mouseX>491.5) {
+        //klikkede på slutDato
+        selected = new PVector(3, i);
+      } else if (mouseY>33*i-Scroll+start&&mouseY<33*i-Scroll+start+33&&mouseX>1153&&mouseX<width-20) {
+        //klikkede på status
+        if (dropDown) {
+          dropDown = false;
+        } else {
+          dropDown = true;
+          dropdownx = 1153;
+          dropdowny = 33*i+start+33;
+          selected = new PVector(5, i);
+        }
+        return;
+      }
+    }
+    dropDown = false;
   }
 }
 
 void mouseWheel(MouseEvent event) {
   dropDown = false;
   float e = event.getCount();
-  if(Scroll+e*3>-3){
-  Scroll += e*3;
+  if (Scroll+e*3>-3&&state==1) {
+    Scroll += e*3;
   }
 }
