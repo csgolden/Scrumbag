@@ -28,8 +28,18 @@ void Gant() {
   text(projektnavn.substring(0, projektnavn.length()-5), 10, start-textAscent());
   textAlign(CENTER, CENTER);
   textSize(18);
+  
+  if(startDato[0].equals("")){
+  text("Udefineret", 437.25, start-textAscent());
+  } else{
   text(startDato[0], 437.25, start-textAscent());
+  }
+  
+  if(slutDato[slutDato.length-1].equals("")){
+  text("Udefineret", 543.75, start-textAscent());
+  } else{
   text(slutDato[slutDato.length-1], 543.75, start-textAscent());
+  }
 
 
   if (dropDown) {
