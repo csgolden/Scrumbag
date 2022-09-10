@@ -74,7 +74,6 @@ void save() {
 
 void fileOpen(File selection) {
   //tilføj automatisk gem af gammelt dokument? bare void save()?
-  save();
   if (selection == null) {
     println("Window was closed or the user hit cancel.");
   } else {

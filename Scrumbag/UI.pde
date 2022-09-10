@@ -1,6 +1,7 @@
 
 void Forside() {
   b.show();
+  edit.hide();
   background(#3F3798);
   fill(255, 52, 246);
   textSize(256);
@@ -9,6 +10,7 @@ void Forside() {
 
 void Gant() {
   b.hide();
+  edit.show();
   background(#FAF9ED);
   opgaver();
   strokeWeight(3);
@@ -52,6 +54,18 @@ void Gant() {
     
   }
 }
+
+
+void edit(int n){
+  if (n==0){
+    selectOutput("Select a file to write to:", "saveAs");
+  } else if (n==1){
+    save();
+  } else{
+    selectInput("Select a file: ", "fileOpen");
+  }
+}
+
 
 
 void opgaver() {

@@ -27,6 +27,7 @@ int Scroll = 0;
 int start = 50;
 
 ButtonBar b;
+ButtonBar edit;
 
 void setup() {
   size(1280, 720);
@@ -40,6 +41,13 @@ void setup() {
     .setSize(400, 20)
     .addItems(split("New Load Sluk", " "))
     ;
+
+  edit = cp5.addButtonBar("edit")
+    .setPosition(width-400,0)
+    .setSize(400, 20)
+    .addItems(split("Gem som,Gem,Open", ","))
+    ;
+   edit.hide();
   //selectOutput("Select a file to write to:", "saveAs");   //gem som done
   //save();  //gem ændringerne i det åbne projekt
 }
