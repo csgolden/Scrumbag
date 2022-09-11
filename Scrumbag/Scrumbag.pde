@@ -43,11 +43,11 @@ void setup() {
     ;
 
   edit = cp5.addButtonBar("edit")
-    .setPosition(width-400,0)
-    .setSize(400, 20)
-    .addItems(split("Gem som,Gem,Open", ","))
+    .setPosition(width-(width-1153)-30, 0)
+    .setSize((width-1153)+30, 20)
+    .addItems(split("Gem som,Gem,Open,Forside", ","))
     ;
-   edit.hide();
+  edit.hide();
   //selectOutput("Select a file to write to:", "saveAs");   //gem som done
   //save();  //gem ændringerne i det åbne projekt
 }
@@ -106,29 +106,28 @@ void mousePressed() {
 
   if (state==1) {
     for (int x = 0; x<muligheder.length; x++) {
-      if(dropDown){
-      if(hklik){
-        if(mouseY>dropdowny+26*x&&mouseY<dropdowny+26+26*x&&mouseX>dropdownx&&mouseX<dropdownx+105){
-        hklik = false;
-          if (x==0) {
-            sletOpgave(int(selected.y));
-          } else if (x==1) {
-            nyOpgave(int(selected.y)+1);
-          } else {
-            nyOpgave(int(selected.y)+2);
+      if (dropDown) {
+        if (hklik) {
+          if (mouseY>dropdowny+26*x&&mouseY<dropdowny+26+26*x&&mouseX>dropdownx&&mouseX<dropdownx+105) {
+            hklik = false;
+            if (x==0) {
+              sletOpgave(int(selected.y));
+            } else if (x==1) {
+              nyOpgave(int(selected.y)+1);
+            } else {
+              nyOpgave(int(selected.y)+2);
+            }
+
+
+            dropDown = false;
+            return;
           }
+        } else if (mouseY>dropdowny-Scroll+26*x&&mouseY<dropdowny-Scroll+26+26*x&&mouseX>1155&&mouseX<width-20) {
 
-
-          dropDown = false;
-          return;
-        }
-      } else if (mouseY>dropdowny-Scroll+26*x&&mouseY<dropdowny-Scroll+26+26*x&&mouseX>1155&&mouseX<width-20) {
-        
           status[int(selected.y)] = x;
           dropDown = false;
           return;
-        
-      }
+        }
       }
     }
     hklik = false;
@@ -170,6 +169,10 @@ void mouseWheel(MouseEvent event) {
   dropDown = false;
   float e = event.getCount();
   if (Scroll+e*3>-3&&state==1) {
-    Scroll += e*3;
+    if (e>0&&Scroll<(33*opgaveNavn.length+start)-height-start) {
+      Scroll += e*3;
+    } else if (e<0) {
+      Scroll += e*3;
+    }
   }
 }

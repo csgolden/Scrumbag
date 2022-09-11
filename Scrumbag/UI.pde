@@ -27,21 +27,28 @@ void Gant() {
   fill(0);
   textSize(20);
   textAlign(LEFT, CENTER);
-  text(projektnavn.substring(0, projektnavn.length()-5), 10, start-textAscent());
+  if (projektnavn.length()>5&&projektnavn.substring(projektnavn.length()-5, projektnavn.length()).equals(".json")) {
+    projektnavn = projektnavn.substring(0, projektnavn.length()-5);
+  }
+  text(projektnavn, 10, start-textAscent());
   textAlign(CENTER, CENTER);
   textSize(18);
-  
-  if(startDato[0].equals("")){
-  text("Udefineret", 437.25, start-textAscent());
-  } else{
-  text(startDato[0], 437.25, start-textAscent());
+  text("Tidslinje", 873.75, start-textAscent());
+  if (startDato.length!=0) {
+    if (startDato[0].equals("")) {
+      text("Udefineret", 437.25, start-textAscent());
+    } else {
+      text(startDato[0], 437.25, start-textAscent());
+    }
+
+
+    if (slutDato[slutDato.length-1].equals("")) {
+      text("Udefineret", 543.75, start-textAscent());
+    } else {
+      text(slutDato[slutDato.length-1], 543.75, start-textAscent());
+    }
   }
-  
-  if(slutDato[slutDato.length-1].equals("")){
-  text("Udefineret", 543.75, start-textAscent());
-  } else{
-  text(slutDato[slutDato.length-1], 543.75, start-textAscent());
-  }
+
 
 
   if (dropDown) {
@@ -51,18 +58,20 @@ void Gant() {
     } else {
       dropdown(dropdownx, dropdowny-Scroll, new String[]{"Passiv", "Aktiv", "Fuldført"});
     }
-    
   }
+  textAlign(LEFT, LEFT);
 }
 
 
-void edit(int n){
-  if (n==0){
+void edit(int n) {
+  if (n==0) {
     selectOutput("Select a file to write to:", "saveAs");
-  } else if (n==1){
+  } else if (n==1) {
     save();
-  } else{
+  } else if (n==2){
     selectInput("Select a file: ", "fileOpen");
+  } else{
+    state = 0;
   }
 }
 

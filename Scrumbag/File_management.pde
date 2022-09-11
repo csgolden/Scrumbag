@@ -145,6 +145,7 @@ void newFile(File selection) {
 
     //println(Save);
   }
+  nyOpgave(1);
   state = 1;
 }
 
