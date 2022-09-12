@@ -126,7 +126,7 @@ void newFile(File selection) {
     JSONObject Save = new JSONObject();
     JSONArray Todo = new JSONArray();
     Save = Save.setJSONArray("Todo", Todo);
-
+    currentlyOpen = selection.getAbsolutePath()+".json"
     if (opgaveNavn.length>0) {
       startdato = startDato[0];
       slutdato = slutDato[slutDato.length-1];
