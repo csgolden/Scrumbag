@@ -169,10 +169,8 @@ void mouseWheel(MouseEvent event) {
   dropDown = false;
   float e = event.getCount();
   if (Scroll+e*3>-3&&state==1) {
-    if (e>0&&Scroll<(33*opgaveNavn.length+start)-height-start) {
+    
       Scroll += e*3;
-    } else if (e<0) {
-      Scroll += e*3;
-    }
+
   }
 }
