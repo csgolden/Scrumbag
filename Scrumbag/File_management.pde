@@ -144,9 +144,10 @@ void newFile(File selection) {
     //createOutput(selection.getAbsolutePath()+".json");
 
     //println(Save);
-  }
+  
   nyOpgave(1);
   state = 1;
+  }
 }
 
 void nyOpgave(int index) {

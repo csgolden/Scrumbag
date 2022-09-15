@@ -87,7 +87,7 @@ void keyPressed() {
   //textsize skal sættes til 14 mens den checker textWidth
   textSize(14);
   try {
-    if ((key >= '!' && key <= 'z'|| key == ' '||key >= 128 && key <= 255)&&key!='$'&&int(textWidth(coolioso[int(selected.x)][int(selected.y)]))+17<lengths[int(selected.x)]&&state==1) {  // 12865
+    if ((key >= '!' && key <= 'z'|| key == ' '||key >= 128 && key <= 255)&&key!='$'&&int(textWidth(coolioso[int(selected.x)][int(selected.y)]))+17<lengths[int(selected.x)]-10&&state==1) {  // 12865
 
       coolioso[int(selected.x)][int(selected.y)] = coolioso[int(selected.x)][int(selected.y)] + key;
       // lånt kode slutter
@@ -111,7 +111,12 @@ void mousePressed() {
           if (mouseY>dropdowny+26*x&&mouseY<dropdowny+26+26*x&&mouseX>dropdownx&&mouseX<dropdownx+105) {
             hklik = false;
             if (x==0) {
+              if(opgaveNavn.length!=1){
               sletOpgave(int(selected.y));
+              } else{
+                sletOpgave(int(selected.y));
+                nyOpgave(1);
+              }
             } else if (x==1) {
               nyOpgave(int(selected.y)+1);
             } else {
