@@ -23,7 +23,7 @@ int dropdownx;
 int dropdowny;
 
 int state = 0;
-int Scroll = 0;
+Float Scroll = 0.0;
 int start = 50;
 
 ButtonBar b;
@@ -32,7 +32,7 @@ ButtonBar edit;
 void setup() {
   size(1280, 720);
   fill(255, 52, 242);
-
+vs1 = new VScrollbar(1270, 0, 20, height, 3*5+1);
 
   ControlP5 cp5;
   cp5 = new ControlP5(this);

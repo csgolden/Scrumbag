@@ -48,18 +48,23 @@ void Gant() {
       text(slutDato[slutDato.length-1], 543.75, start-textAscent());
     }
   }
-
-
-
   if (dropDown) {
     strokeWeight(1);
     if (hklik) {
       dropdown(dropdownx, dropdowny, new String[]{"Slet opgave", "Ny opgave over", "Ny opgave under"});
     } else {
-      dropdown(dropdownx, dropdowny-Scroll, new String[]{"Passiv", "Aktiv", "Fuldført"});
+      dropdown(dropdownx, dropdowny-int(Scroll), new String[]{"Passiv", "Aktiv", "Fuldført"});
     }
   }
   textAlign(LEFT, LEFT);
+    
+    vs1.newspos = Scroll;
+    vs1.spos = Scroll;
+fill(255);
+  Scroll = vs1.getPos();  
+
+  vs1.update();
+  vs1.display();
 }
 
 
