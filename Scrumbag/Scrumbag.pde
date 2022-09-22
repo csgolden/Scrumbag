@@ -32,8 +32,16 @@ ButtonBar edit;
 void setup() {
   size(1280, 720);
   fill(255, 52, 242);
+<<<<<<< Updated upstream
 vs1 = new VScrollbar(1270, 0, 20, height, 3*5+1);
+=======
 
+  //debug
+  
+  state = 2;
+>>>>>>> Stashed changes
+
+  
   ControlP5 cp5;
   cp5 = new ControlP5(this);
   b = cp5.addButtonBar("bar")
@@ -43,8 +51,8 @@ vs1 = new VScrollbar(1270, 0, 20, height, 3*5+1);
     ;
 
   edit = cp5.addButtonBar("edit")
-    .setPosition(width-(width-1100)-30, 0)
-    .setSize((width-1090)+30, 20)
+    .setPosition(953, 0)
+    .setSize(330, 24)
     .addItems(split("Gem som,Gem,Open,Forside,Gantt,Agile", ","))
     ;
   edit.hide();
@@ -60,12 +68,26 @@ println(state);
   } else if (state==1) {
     Gant();
   } else {
-    //Agile();
+    Agile();
   }
   textSize(12);
 }
 
-
+void edit(int n) {
+  if (n==0) {
+    selectOutput("Select a file to write to:", "saveAs");
+  } else if (n==1) {
+    save();
+  } else if (n==2) {
+    selectInput("Select a file: ", "fileOpen");
+  } else if (n==3) {
+    state = 0;
+  } else if(n==4) {
+    state = 1;
+  } else {
+    state = 2;
+  }
+}
 
 void bar(int n) {
   if (n==0) {
