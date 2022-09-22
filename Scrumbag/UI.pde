@@ -73,10 +73,14 @@ void edit(int n) {
     selectOutput("Select a file to write to:", "saveAs");
   } else if (n==1) {
     save();
-  } else if (n==2){
+  } else if (n==2) {
     selectInput("Select a file: ", "fileOpen");
-  } else{
+  } else if (n==3) {
     state = 0;
+  } else if(n==4) {
+    state = 1;
+  } else {
+    state = 2;
   }
 }
 

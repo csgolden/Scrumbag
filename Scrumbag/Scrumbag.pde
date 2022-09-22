@@ -43,9 +43,9 @@ vs1 = new VScrollbar(1270, 0, 20, height, 3*5+1);
     ;
 
   edit = cp5.addButtonBar("edit")
-    .setPosition(width-(width-1153)-30, 0)
-    .setSize((width-1153)+30, 20)
-    .addItems(split("Gem som,Gem,Open,Forside", ","))
+    .setPosition(width-(width-1100)-30, 0)
+    .setSize((width-1090)+30, 20)
+    .addItems(split("Gem som,Gem,Open,Forside,Gantt,Agile", ","))
     ;
   edit.hide();
   //selectOutput("Select a file to write to:", "saveAs");   //gem som done
@@ -54,7 +54,7 @@ vs1 = new VScrollbar(1270, 0, 20, height, 3*5+1);
 void draw() {
   coolioso = new String[][]{opgaveNavn, ansvarlig, startDato, slutDato, antalTimer};
   strokeWeight(1);
-
+println(state);
   if (state==0) {
     Forside();
   } else if (state==1) {
