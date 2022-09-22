@@ -1,2 +1,3 @@
 # Scrumbag
-This is our version of Gantt and Agile.
+Det her er vores version af Gantt og Agile.
+Programmet kan blive brugt til at lave projekt styring.
