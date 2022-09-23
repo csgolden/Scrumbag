@@ -1,3 +1,6 @@
+import java.util.Date;
+import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 void Forside() {
   b.show();
@@ -12,12 +15,12 @@ void Gant() {
   b.hide();
   edit.show();
   background(#FAF9ED);
-  opgaverGant();
+  opgaver();
   strokeWeight(3);
-  line(385, start+1-ganttScroll.Scroll, 385, start+33*opgaveNavn.length-1-ganttScroll.Scroll);
-  line(491.5, start+1-ganttScroll.Scroll, 491.5, start+33*opgaveNavn.length-1-ganttScroll.Scroll);
-  line(594.5, start+1-ganttScroll.Scroll, 594.5, start+33*opgaveNavn.length-1-ganttScroll.Scroll);
-  line(1153, start+1-ganttScroll.Scroll, 1153, start+33*opgaveNavn.length-1-ganttScroll.Scroll);
+  line(385, start+1-Scroll, 385, start+33*opgaveNavn.length-1-Scroll);
+  line(491.5, start+1-Scroll, 491.5, start+33*opgaveNavn.length-1-Scroll);
+  line(594.5, start+1-Scroll, 594.5, start+33*opgaveNavn.length-1-Scroll);
+  line(1153, start+1-Scroll, 1153, start+33*opgaveNavn.length-1-Scroll);
 
   strokeWeight(0.5);
   fill(#D9D9D9);
@@ -48,91 +51,92 @@ void Gant() {
       text(slutDato[slutDato.length-1], 543.75, start-textAscent());
     }
   }
+
+
+
   if (dropDown) {
     strokeWeight(1);
     if (hklik) {
       dropdown(dropdownx, dropdowny, new String[]{"Slet opgave", "Ny opgave over", "Ny opgave under"});
     } else {
-      dropdown(dropdownx, dropdowny-int(ganttScroll.Scroll), new String[]{"Passiv", "Aktiv", "Fuldført"});
+      dropdown(dropdownx, dropdowny-Scroll, new String[]{"Passiv", "Aktiv", "Fuldført"});
     }
   }
   textAlign(LEFT, LEFT);
-    
-  ganttScroll.draw();
-  
-fill(255);
-
 }
 
 
-
-
-
-
-
-
-
-void opgaverGant() {
-  for (int i  = 0; i<opgaveNavn.length; i++) {
-
-    fill(#EDEDED);
-    rect(0, 33*i-ganttScroll.Scroll+start, width-20, 33);
-    textSize(14);
-    fill(0);
-    textAlign(LEFT, CENTER);
-    text(opgaveNavn[i], 9, 33*i-ganttScroll.Scroll+start+15);
-    if (status[i]==0) {
-      text("Passiv", 1162, 33*i-ganttScroll.Scroll+start+15);
-      fill(#D7E4F5);
-    } else if (status[i]==1) {
-      text("Aktiv", 1162, 33*i-ganttScroll.Scroll+start+15);
-      fill(#F0F298);
-    } else {
-      text("Fuldført", 1162, 33*i-ganttScroll.Scroll+start+15);
-      fill(#1BA029);
-    }
-    beginShape();
-    vertex(1231, 10+33*i-ganttScroll.Scroll+start+4);
-    vertex(1247, 10+33*i-ganttScroll.Scroll+start+4);
-    vertex(1239.5, 10+33*i-ganttScroll.Scroll+start+5+4);
-    endShape(CLOSE);
-
-    fill(0);
-    textAlign(CENTER, CENTER);
-    text(startDato[i], 438.25, 33*i-ganttScroll.Scroll+start+15);
-    text(slutDato[i], 543, 33*i-ganttScroll.Scroll+start+15);
+void edit(int n) {
+  if (n==0) {
+    selectOutput("Select a file to write to:", "saveAs");
+  } else if (n==1) {
+    save();
+  } else if (n==2){
+    selectInput("Select a file: ", "fileOpen");
+  } else{
+    state = 0;
   }
 }
 
-void opgaverAgile() {
+
+
+void opgaver() {
   for (int i  = 0; i<opgaveNavn.length; i++) {
 
     fill(#EDEDED);
-    rect(0, 33*i-ganttScroll.Scroll+start, width-20, 33);
+    rect(0, 33*i-Scroll+start, width-20, 33);
     textSize(14);
     fill(0);
     textAlign(LEFT, CENTER);
-    text(opgaveNavn[i], 9, 33*i-ganttScroll.Scroll+start+15);
+    text(opgaveNavn[i], 9, 33*i-Scroll+start+15);
     if (status[i]==0) {
-      text("Passiv", 1162, 33*i-ganttScroll.Scroll+start+15);
+      text("Passiv", 1162, 33*i-Scroll+start+15);
       fill(#D7E4F5);
+      
+      try{
+      int[] begin = int(split(startDato[i], '/'));
+      Date begynd = new Date(begin[2]-1900,begin[1]-1,begin[0]);
+      
+      int[] færdig = int(split(slutDato[i], '/'));
+      Date slut = new Date(færdig[2]-1900,færdig[1]-1,færdig[0]);
+      
+      long begyndInMs = begynd.getTime();
+      long slutInMs = slut.getTime();
+      
+      
+      
+      rect(600, 7+33*i-Scroll+start, 550*(begyndInMs/slutInMs), 18);
+      println(begyndInMs);
+      println(slutInMs);
+      
+      }catch(Exception e) {
+      
+      
+      }
+      
     } else if (status[i]==1) {
-      text("Aktiv", 1162, 33*i-ganttScroll.Scroll+start+15);
+      text("Aktiv", 1162, 33*i-Scroll+start+15);
       fill(#F0F298);
+      
+      rect(600, 7+33*i-Scroll+start, 550, 18);
+      
     } else {
-      text("Fuldført", 1162, 33*i-ganttScroll.Scroll+start+15);
+      text("Fuldført", 1162, 33*i-Scroll+start+15);
       fill(#1BA029);
+      
+      rect(600+550*0.1, 7+33*i-Scroll+start, 550*0.9, 18);
+      
     }
     beginShape();
-    vertex(1231, 10+33*i-ganttScroll.Scroll+start+4);
-    vertex(1247, 10+33*i-ganttScroll.Scroll+start+4);
-    vertex(1239.5, 10+33*i-ganttScroll.Scroll+start+5+4);
+    vertex(1231, 10+33*i-Scroll+start+4);
+    vertex(1247, 10+33*i-Scroll+start+4);
+    vertex(1239.5, 10+33*i-Scroll+start+5+4);
     endShape(CLOSE);
 
     fill(0);
     textAlign(CENTER, CENTER);
-    text(startDato[i], 438.25, 33*i-ganttScroll.Scroll+start+15);
-    text(slutDato[i], 543, 33*i-ganttScroll.Scroll+start+15);
+    text(startDato[i], 438.25, 33*i-Scroll+start+15);
+    text(slutDato[i], 543, 33*i-Scroll+start+15);
   }
 }
 
