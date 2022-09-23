@@ -155,7 +155,7 @@ void mousePressed() {
             dropDown = false;
             return;
           }
-        } else if (mouseY>dropdowny-Scroll+26*x&&mouseY<dropdowny-Scroll+26+26*x&&mouseX>1155&&mouseX<width-20) {
+        } else if (mouseY>dropdowny-ganttScroll.Scroll+26*x&&mouseY<dropdowny-ganttScroll.Scroll+26+26*x&&mouseX>1155&&mouseX<width-20) {
 
           status[int(selected.y)] = x;
           dropDown = false;
@@ -165,23 +165,23 @@ void mousePressed() {
     }
     hklik = false;
     for (int i  = 0; i<opgaveNavn.length; i++) {
-      if (mouseButton == RIGHT&&mouseY>33*i-Scroll+start&&mouseY<33*i-Scroll+start+33) {
+      if (mouseButton == RIGHT&&mouseY>33*i-ganttScroll.Scroll+start&&mouseY<33*i-ganttScroll.Scroll+start+33) {
         hklik = true;
         dropDown = true;
         dropdownx = mouseX;
         dropdowny = mouseY;
         selected = new PVector(5, i);
         return;
-      } else if (mouseY>33*i-Scroll+start&&mouseY<33*i-Scroll+start+33&&mouseX<385) {
+      } else if (mouseY>33*i-ganttScroll.Scroll+start&&mouseY<33*i-ganttScroll.Scroll+start+33&&mouseX<385) {
         //klikkede på opgaveNavn
         selected = new PVector(0, i);
-      } else if (mouseY>33*i-Scroll+start&&mouseY<33*i-Scroll+start+33&&mouseX<491.5&&mouseX>385) {
+      } else if (mouseY>33*i-ganttScroll.Scroll+start&&mouseY<33*i-ganttScroll.Scroll+start+33&&mouseX<491.5&&mouseX>385) {
         //klikkede på startdato
         selected = new PVector(2, i);
-      } else if (mouseY>33*i-Scroll+start&&mouseY<33*i-Scroll+start+33&&mouseX<594.5&&mouseX>491.5) {
+      } else if (mouseY>33*i-ganttScroll.Scroll+start&&mouseY<33*i-ganttScroll.Scroll+start+33&&mouseX<594.5&&mouseX>491.5) {
         //klikkede på slutDato
         selected = new PVector(3, i);
-      } else if (mouseY>33*i-Scroll+start&&mouseY<33*i-Scroll+start+33&&mouseX>1153&&mouseX<width-20) {
+      } else if (mouseY>33*i-ganttScroll.Scroll+start&&mouseY<33*i-ganttScroll.Scroll+start+33&&mouseX>1153&&mouseX<width-20) {
         //klikkede på status
         if (dropDown) {
           dropDown = false;
