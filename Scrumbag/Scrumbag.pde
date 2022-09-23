@@ -38,10 +38,6 @@ void setup() {
   agileScroll = new Scrollbar(930, 970, 24, 643);
 
 
-  //debug
-  
-  state = 2;
-
 
   
   ControlP5 cp5;
