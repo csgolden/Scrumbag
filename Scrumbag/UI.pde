@@ -14,10 +14,10 @@ void Gant() {
   background(#FAF9ED);
   opgaverGant();
   strokeWeight(3);
-  line(385, start+1-Scroll, 385, start+33*opgaveNavn.length-1-Scroll);
-  line(491.5, start+1-Scroll, 491.5, start+33*opgaveNavn.length-1-Scroll);
-  line(594.5, start+1-Scroll, 594.5, start+33*opgaveNavn.length-1-Scroll);
-  line(1153, start+1-Scroll, 1153, start+33*opgaveNavn.length-1-Scroll);
+  line(385, start+1-ganttScroll.Scroll, 385, start+33*opgaveNavn.length-1-ganttScroll.Scroll);
+  line(491.5, start+1-ganttScroll.Scroll, 491.5, start+33*opgaveNavn.length-1-ganttScroll.Scroll);
+  line(594.5, start+1-ganttScroll.Scroll, 594.5, start+33*opgaveNavn.length-1-ganttScroll.Scroll);
+  line(1153, start+1-ganttScroll.Scroll, 1153, start+33*opgaveNavn.length-1-ganttScroll.Scroll);
 
   strokeWeight(0.5);
   fill(#D9D9D9);
@@ -53,18 +53,15 @@ void Gant() {
     if (hklik) {
       dropdown(dropdownx, dropdowny, new String[]{"Slet opgave", "Ny opgave over", "Ny opgave under"});
     } else {
-      dropdown(dropdownx, dropdowny-int(Scroll), new String[]{"Passiv", "Aktiv", "Fuldført"});
+      dropdown(dropdownx, dropdowny-int(ganttScroll.Scroll), new String[]{"Passiv", "Aktiv", "Fuldført"});
     }
   }
   textAlign(LEFT, LEFT);
     
-    vs1.newspos = Scroll;
-    vs1.spos = Scroll;
+  ganttScroll.draw();
+  
 fill(255);
-  Scroll = vs1.getPos();  
 
-  vs1.update();
-  vs1.display();
 }
 
 
@@ -79,31 +76,31 @@ void opgaverGant() {
   for (int i  = 0; i<opgaveNavn.length; i++) {
 
     fill(#EDEDED);
-    rect(0, 33*i-Scroll+start, width-20, 33);
+    rect(0, 33*i-ganttScroll.Scroll+start, width-20, 33);
     textSize(14);
     fill(0);
     textAlign(LEFT, CENTER);
-    text(opgaveNavn[i], 9, 33*i-Scroll+start+15);
+    text(opgaveNavn[i], 9, 33*i-ganttScroll.Scroll+start+15);
     if (status[i]==0) {
-      text("Passiv", 1162, 33*i-Scroll+start+15);
+      text("Passiv", 1162, 33*i-ganttScroll.Scroll+start+15);
       fill(#D7E4F5);
     } else if (status[i]==1) {
-      text("Aktiv", 1162, 33*i-Scroll+start+15);
+      text("Aktiv", 1162, 33*i-ganttScroll.Scroll+start+15);
       fill(#F0F298);
     } else {
-      text("Fuldført", 1162, 33*i-Scroll+start+15);
+      text("Fuldført", 1162, 33*i-ganttScroll.Scroll+start+15);
       fill(#1BA029);
     }
     beginShape();
-    vertex(1231, 10+33*i-Scroll+start+4);
-    vertex(1247, 10+33*i-Scroll+start+4);
-    vertex(1239.5, 10+33*i-Scroll+start+5+4);
+    vertex(1231, 10+33*i-ganttScroll.Scroll+start+4);
+    vertex(1247, 10+33*i-ganttScroll.Scroll+start+4);
+    vertex(1239.5, 10+33*i-ganttScroll.Scroll+start+5+4);
     endShape(CLOSE);
 
     fill(0);
     textAlign(CENTER, CENTER);
-    text(startDato[i], 438.25, 33*i-Scroll+start+15);
-    text(slutDato[i], 543, 33*i-Scroll+start+15);
+    text(startDato[i], 438.25, 33*i-ganttScroll.Scroll+start+15);
+    text(slutDato[i], 543, 33*i-ganttScroll.Scroll+start+15);
   }
 }
 
@@ -111,31 +108,31 @@ void opgaverAgile() {
   for (int i  = 0; i<opgaveNavn.length; i++) {
 
     fill(#EDEDED);
-    rect(0, 33*i-Scroll+start, width-20, 33);
+    rect(0, 33*i-ganttScroll.Scroll+start, width-20, 33);
     textSize(14);
     fill(0);
     textAlign(LEFT, CENTER);
-    text(opgaveNavn[i], 9, 33*i-Scroll+start+15);
+    text(opgaveNavn[i], 9, 33*i-ganttScroll.Scroll+start+15);
     if (status[i]==0) {
-      text("Passiv", 1162, 33*i-Scroll+start+15);
+      text("Passiv", 1162, 33*i-ganttScroll.Scroll+start+15);
       fill(#D7E4F5);
     } else if (status[i]==1) {
-      text("Aktiv", 1162, 33*i-Scroll+start+15);
+      text("Aktiv", 1162, 33*i-ganttScroll.Scroll+start+15);
       fill(#F0F298);
     } else {
-      text("Fuldført", 1162, 33*i-Scroll+start+15);
+      text("Fuldført", 1162, 33*i-ganttScroll.Scroll+start+15);
       fill(#1BA029);
     }
     beginShape();
-    vertex(1231, 10+33*i-Scroll+start+4);
-    vertex(1247, 10+33*i-Scroll+start+4);
-    vertex(1239.5, 10+33*i-Scroll+start+5+4);
+    vertex(1231, 10+33*i-ganttScroll.Scroll+start+4);
+    vertex(1247, 10+33*i-ganttScroll.Scroll+start+4);
+    vertex(1239.5, 10+33*i-ganttScroll.Scroll+start+5+4);
     endShape(CLOSE);
 
     fill(0);
     textAlign(CENTER, CENTER);
-    text(startDato[i], 438.25, 33*i-Scroll+start+15);
-    text(slutDato[i], 543, 33*i-Scroll+start+15);
+    text(startDato[i], 438.25, 33*i-ganttScroll.Scroll+start+15);
+    text(slutDato[i], 543, 33*i-ganttScroll.Scroll+start+15);
   }
 }
 

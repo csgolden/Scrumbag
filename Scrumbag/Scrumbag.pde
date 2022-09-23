@@ -1,5 +1,6 @@
 import controlP5.*;
-
+Scrollbar ganttScroll;
+Scrollbar agileScroll;
 //https://processing.org/reference/JSONArray.html
 String[] opgaveNavn = {"test"};
 String[] ansvarlig = {" "};
@@ -32,14 +33,15 @@ ButtonBar edit;
 void setup() {
   size(1280, 720);
   fill(255, 52, 242);
-<<<<<<< Updated upstream
-vs1 = new VScrollbar(1270, 0, 20, height, 3*5+1);
-=======
+
+  ganttScroll = new Scrollbar(width-20, start-1, 19, height-(start));
+  agileScroll = new Scrollbar(930, 970, 24, 643);
+
 
   //debug
   
   state = 2;
->>>>>>> Stashed changes
+
 
   
   ControlP5 cp5;
@@ -62,7 +64,7 @@ vs1 = new VScrollbar(1270, 0, 20, height, 3*5+1);
 void draw() {
   coolioso = new String[][]{opgaveNavn, ansvarlig, startDato, slutDato, antalTimer};
   strokeWeight(1);
-println(state);
+//println(state);
   if (state==0) {
     Forside();
   } else if (state==1) {
@@ -127,6 +129,10 @@ void keyPressed() {
 void mousePressed() {
 
   if (state==1) {
+    //width-20, start-1, 19
+    
+    
+    
     for (int x = 0; x<muligheder.length; x++) {
       if (dropDown) {
         if (hklik) {
@@ -194,10 +200,10 @@ void mousePressed() {
 
 void mouseWheel(MouseEvent event) {
   dropDown = false;
-  float e = event.getCount();
-  if (Scroll+e*3>-3&&state==1) {
-    
-      Scroll += e*3;
-
+  int e = event.getCount();
+  if(state==1){
+  ganttScroll.Scroll(e);
+  } else if (state==2){
+  agileScroll.Scroll(e);
   }
 }
