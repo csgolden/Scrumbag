@@ -14,7 +14,7 @@ void Forside() {
 
 void Gant() {
   b.hide();
-  
+
   edit.show();
   background(#FAF9ED);
   opgaverGant();
@@ -77,6 +77,8 @@ void Gant() {
 
 
 void opgaverGant() {
+  startdato = startDato[0];
+  slutdato = slutDato[slutDato.length-1];
   for (int i  = 0; i<opgaveNavn.length; i++) {
 
     fill(#EDEDED);
@@ -110,15 +112,34 @@ void opgaverGant() {
       int[] færdig = int(split(slutDato[i], '/'));
       Date slut = new Date(færdig[2]-1900, færdig[1]-1, færdig[0]);
 
+      int[] beginP = int(split(startdato, '/'));
+      Date begyndP =new Date(beginP[2]-1900, beginP[1]-1, beginP[0]);
+
+      int[] færdigP = int(split(slutdato, '/'));
+      Date slutP =new Date(færdigP[2]-1900, færdigP[1]-1, færdigP[0]);
+
+
       long begyndInMs = begynd.getTime();
       long slutInMs = slut.getTime();
 
-      long len = 550*(begyndInMs/slutInMs);
-      if(begyndInMs<slutInMs){
-      rect(600, 7+33*i-ganttScroll.Scroll+start, len, 18);
+      long begyndPInMs = begyndP.getTime();
+      long slutPInMs = slutP.getTime();
+
+      long timePro = Math.abs(slutPInMs - begyndPInMs);
+      long timeOpg = Math.abs(slutInMs-begyndInMs);
+      long timeStart = Math.abs(begyndInMs-begyndPInMs);
+
+      float daysOpg = TimeUnit.DAYS.convert(timeOpg, TimeUnit.MILLISECONDS);
+      float daysPro = TimeUnit.DAYS.convert(timePro, TimeUnit.MILLISECONDS);
+      float daysStart = TimeUnit.DAYS.convert(timeStart, TimeUnit.MILLISECONDS);
+
+      float len = daysOpg/daysPro;
+      float startP = daysStart/daysPro;
+
+        if (begyndInMs>0 && begyndInMs<slutInMs) {
+        rect(600+(550*startP), 7+33*i-ganttScroll.Scroll+start, 550*len, 18);
       }
-      println(begyndInMs);
-      println(slutInMs);
+      println(start);
     }
     catch(Exception e) {
     }
