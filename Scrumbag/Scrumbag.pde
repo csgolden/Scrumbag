@@ -32,12 +32,15 @@ int start = 50;
 ButtonBar b;
 ButtonBar edit;
 
+BurnUp BChart = new BurnUp();
+Chart myChart;
 void setup() {
   size(1280, 720);
   fill(255, 52, 242);
 
   ganttScroll = new Scrollbar(width-20, start-1, 19, height-(start));
   agileScroll = new Scrollbar(929, 81, 24, height-81-20);
+
 
 
 
@@ -58,6 +61,17 @@ void setup() {
   edit.hide();
   //selectOutput("Select a file to write to:", "saveAs");   //gem som done
   //save();  //gem ændringerne i det åbne projekt
+myChart = cp5.addChart("d") 
+.setPosition(width-326, height-319)
+    .setSize(326, 319)
+    .setView(Chart.LINE) // use Chart.LINE, Chart.PIE, Chart.AREA, Chart.BAR_CENTERED
+    .setStrokeWeight(1.5)
+    .setColorCaptionLabel(#03FC00)
+    .setMoveable(true)
+    .setRange(0, 60)
+    .setColorBackground(#FFFFFF)
+.hide();
+
 }
 void draw() {
   coolioso = new String[][]{opgaveNavn, ansvarlig, startDato, slutDato, antalTimer};
@@ -71,6 +85,9 @@ void draw() {
     Agile();
   }
   textSize(12);
+
+BChart.prescence();
+if(state==2){BChart.upData();}
 }
 
 void edit(int n) {
@@ -122,6 +139,7 @@ void keyPressed() {
   }
   catch(StringIndexOutOfBoundsException e) {  // hvis det ville give den error message out of bounds
   }
+  
 }
 
 void mousePressed() {
@@ -204,4 +222,9 @@ void mouseWheel(MouseEvent event) {
   } else if (state==2){
   agileScroll.Scroll(e);
   }
+}
+
+
+void mouseDragged() {
+ BChart.resize();
 }

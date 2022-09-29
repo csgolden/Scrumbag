@@ -149,6 +149,7 @@ void newFile(File selection) {
   nyOpgave(1);
   state = 1;
   }
+save();
 }
 
 void nyOpgave(int index) {
