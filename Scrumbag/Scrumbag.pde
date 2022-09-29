@@ -9,8 +9,10 @@ String[] slutDato = {" "};
 int[] prioritet = {0};
 int[] status = {0};
 String[] antalTimer = {"0"};
+String[] timerBrugt = {"2", "0", "0"};
+String[] holdet = {"Lukas", "Jacob", "etc"};
 
-String[][] coolioso = {opgaveNavn, ansvarlig, startDato, slutDato, antalTimer};
+String[][] coolioso = {opgaveNavn, ansvarlig, startDato, slutDato, antalTimer, timerBrugt};
 String projektnavn = "et eller andet";
 String startdato = "";
 String slutdato = "";
@@ -35,7 +37,7 @@ void setup() {
   fill(255, 52, 242);
 
   ganttScroll = new Scrollbar(width-20, start-1, 19, height-(start));
-  agileScroll = new Scrollbar(930, 970, 24, 643);
+  agileScroll = new Scrollbar(929, 81, 24, height-81-20);
 
 
 

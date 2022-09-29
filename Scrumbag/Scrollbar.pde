@@ -14,8 +14,8 @@ class Scrollbar {
     h = hi;
   }
   void mouseScroll() {
-    Float r = (mouseY-start)/float(h);
-    if(!(mouseY<start+20)){
+    Float r = (mouseY-y)/float(h);
+    if(!(int(r*max)-10<=0)){
     Scroll = int(r*max)-10;
     }
     println(Scroll, " ", r);
@@ -27,7 +27,7 @@ class Scrollbar {
     if (Scroll+20>=max&&e>0) {
       return;
     }
-    if (Scroll+e*3>-3) {
+    if (Scroll+e*3>=0) {
       Scroll += e*3;
     }
   }
@@ -37,8 +37,8 @@ class Scrollbar {
 
   void draw() {
     
-    if(mouseX>width-20&&mouseY>start&&mousePressed){
-      ganttScroll.mouseScroll();
+    if(mouseX>x&&mouseX<x+w&&mouseY>y&&mousePressed){
+      this.mouseScroll();
     }
     
     max = (opgaveNavn.length*33+300);
@@ -54,6 +54,6 @@ class Scrollbar {
     } else {
       r = 0.0;
     }
-    rect(x, r*h+start, w, 20);
+    rect(x, r*h+y, w, 20);
   }
 }
