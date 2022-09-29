@@ -4,7 +4,6 @@ import java.util.concurrent.TimeUnit;
 
 void Forside() {
   b.show();
-  println(System.nanoTime());
   edit.hide();
   background(#3F3798);
   fill(255, 52, 246);
@@ -139,7 +138,6 @@ void opgaverGant() {
         if (begyndInMs>0 && begyndInMs<slutInMs) {
         rect(600+(550*startP), 7+33*i-ganttScroll.Scroll+start, 550*len, 18);
       }
-      println(start);
     }
     catch(Exception e) {
     }

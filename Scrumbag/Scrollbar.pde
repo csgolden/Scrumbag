@@ -12,8 +12,6 @@ class Scrollbar {
     y = yi;
     w = wi;
     h = hi;
-
-    println(h);
   }
   void mouseScroll() {
     Float r = (mouseY-start)/float(h);
