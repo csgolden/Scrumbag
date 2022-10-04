@@ -23,7 +23,7 @@ void saveAs(File selection) {
       opgaver.setString("opgaven", opgaveNavn[i]);
       opgaver.setString("startdato", startDato[i]);
       opgaver.setString("slutdato", slutDato[i]);
-      opgaver.setInt("prioritet", prioritet[i]);
+      opgaver.setString("prioritet", prioritet[i]);
       opgaver.setInt("status", status[i]);
       opgaver.setString("antal timer", antalTimer[i]);
       opgaver.setString("ansvarlig", ansvarlig[i]);
@@ -58,7 +58,7 @@ void save() {
       opgaver.setString("opgaven", opgaveNavn[i]);
       opgaver.setString("startdato", startDato[i]);
       opgaver.setString("slutdato", slutDato[i]);
-      opgaver.setInt("prioritet", prioritet[i]);
+      opgaver.setString("prioritet", prioritet[i]);
       opgaver.setInt("status", status[i]);
       opgaver.setString("antal timer", antalTimer[i]);
       opgaver.setString("ansvarlig", ansvarlig[i]);
@@ -77,12 +77,13 @@ void fileOpen(File selection) {
   //tilføj automatisk gem af gammelt dokument? bare void save()?
   if (selection == null) {
     println("Window was closed or the user hit cancel.");
+    state = 0;
   } else {
     opgaveNavn = new String[0];
     ansvarlig = new String[0];
     startDato = new String[0];
     slutDato = new String[0];
-    prioritet = new int[0];
+    prioritet = new String[0];
     status = new int[0];
     antalTimer = new String[0];
     projektnavn = selection.getName();
@@ -97,9 +98,9 @@ void fileOpen(File selection) {
       startDato = append(startDato, opgaver.getString("startdato"));
       slutDato = append(slutDato, opgaver.getString("slutdato"));
       ansvarlig = append(ansvarlig, opgaver.getString("ansvarlig"));
-      prioritet = append(prioritet, opgaver.getInt("prioritet"));
+      prioritet = append(prioritet, opgaver.getString("prioritet"));
       status = append(status, opgaver.getInt("status"));
-      antalTimer = append(antalTimer, opgaver.getString("antalTimer"));
+      antalTimer = append(antalTimer, opgaver.getString("antal timer"));
     }
 
     if (opgaveNavn.length!=0) {
@@ -110,7 +111,7 @@ void fileOpen(File selection) {
     //printArray(startDato);
     //printArray(slutDato);
   }
-  state = 1;
+  loop();
 }
 
 void newFile(File selection) {
@@ -121,7 +122,7 @@ void newFile(File selection) {
     ansvarlig = new String[0];
     startDato = new String[0];
     slutDato = new String[0];
-    prioritet = new int[0];
+    prioritet = new String[0];
     status = new int[0];
     antalTimer = new String[0];
     JSONObject Save = new JSONObject();
@@ -149,8 +150,9 @@ void newFile(File selection) {
   nyOpgave(1);
   state = 1;
   }
-save();
-}
+
+  save();
+
 
 void nyOpgave(int index) {
   //for nu er tanken at man kan tilføje opgaver specifikke steder. men ellers er det bare at skifte til append.
@@ -159,7 +161,7 @@ void nyOpgave(int index) {
   startDato = splice(startDato, "", index-1);
   slutDato = splice(slutDato, "", index-1);
   ansvarlig = splice(ansvarlig, "", index-1);
-  prioritet = splice(prioritet, 0, index-1);
+  prioritet = splice(prioritet, "", index-1);
   antalTimer = splice(antalTimer, "", index-1);
   status = splice(status, 0, index-1);
 }
@@ -170,7 +172,7 @@ void sletOpgave(int index) {
     ansvarlig = new String[0];
     startDato = new String[0];
     slutDato = new String[0];
-    prioritet = new int[0];
+    prioritet = new String[0];
     status = new int[0];
     antalTimer = new String[0];
   } else if (opgaveNavn.length==2) {
@@ -183,7 +185,7 @@ void sletOpgave(int index) {
     ansvarlig = new String[]{ansvarlig[index]};
     startDato = new String[]{startDato[index]};
     slutDato = new String[]{slutDato[index]};
-    prioritet = new int[]{prioritet[index]};
+    prioritet = new String[]{prioritet[index]};
     status = new int[]{status[index]};
     antalTimer = new String[]{antalTimer[index]};
   } else if (opgaveNavn.length>2) {
