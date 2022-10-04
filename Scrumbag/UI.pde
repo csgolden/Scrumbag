@@ -160,31 +160,40 @@ void opgaverAgile() {
   for (int i  = 0; i<opgaveNavn.length; i++) {
 
     fill(#EDEDED);
-    rect(0, 33*i-ganttScroll.Scroll+start, width-20, 33);
+    rect(0, 33*i-agileScroll.Scroll+start, 934, 33);
     textSize(14);
     fill(0);
     textAlign(LEFT, CENTER);
-    text(opgaveNavn[i], 9, 33*i-ganttScroll.Scroll+start+15);
-    if (status[i]==0) {
-      text("Passiv", 1162, 33*i-ganttScroll.Scroll+start+15);
-      fill(#D7E4F5);
-    } else if (status[i]==1) {
-      text("Aktiv", 1162, 33*i-ganttScroll.Scroll+start+15);
-      fill(#F0F298);
-    } else {
-      text("Fuldført", 1162, 33*i-ganttScroll.Scroll+start+15);
-      fill(#1BA029);
-    }
+    text(opgaveNavn[i], 9, 33*i-agileScroll.Scroll+start+15);
+    text(prioritet[i], 384+10, 10+33*i-agileScroll.Scroll+start+4);
+    text(ansvarlig[i], 594.5+10, 10+33*i-agileScroll.Scroll+start+4);
+    textAlign(CENTER, CENTER);
+    text(antalTimer[i], 490.5+(51), 33*i-agileScroll.Scroll+start+(27/2));
+    text(slutDato[i], 875.5, 33*i-agileScroll.Scroll+start+(27/2));
+    
+    /*
     beginShape();
     vertex(1231, 10+33*i-ganttScroll.Scroll+start+4);
     vertex(1247, 10+33*i-ganttScroll.Scroll+start+4);
     vertex(1239.5, 10+33*i-ganttScroll.Scroll+start+5+4);
     endShape(CLOSE);
+    
 
     fill(0);
     textAlign(CENTER, CENTER);
     text(startDato[i], 438.25, 33*i-ganttScroll.Scroll+start+15);
     text(slutDato[i], 543, 33*i-ganttScroll.Scroll+start+15);
+    */
+    beginShape();
+    vertex(678, 10+33*i-agileScroll.Scroll+start+4);
+    vertex(678+15, 10+33*i-agileScroll.Scroll+start+4);
+    vertex(678+7.5, 10+33*i-agileScroll.Scroll+start+5+4);
+    endShape(CLOSE);
+    beginShape();
+    vertex(465, 10+33*i-agileScroll.Scroll+start+4);
+    vertex(465+15, 10+33*i-agileScroll.Scroll+start+4);
+    vertex(465+7.5, 10+33*i-agileScroll.Scroll+start+5+4);
+    endShape(CLOSE);
   }
 }
 
