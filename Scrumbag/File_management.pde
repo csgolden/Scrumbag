@@ -150,8 +150,9 @@ void newFile(File selection) {
   nyOpgave(1);
   state = 1;
   }
+
   save();
-}
+
 
 void nyOpgave(int index) {
   //for nu er tanken at man kan tilføje opgaver specifikke steder. men ellers er det bare at skifte til append.

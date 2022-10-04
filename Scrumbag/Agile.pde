@@ -75,7 +75,7 @@ void Agile() {
 textAlign(LEFT, CENTER);
 
   agileScroll.draw();
-  //burndown chart
+  if(state==2){BChart.BurnUP();myChart.show();}else{myChart.hide();}
   fill(#A9A9A9);
   rect(953, 400, 327, 320);
   strokeWeight(2);
