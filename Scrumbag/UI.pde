@@ -54,7 +54,7 @@ void Gant() {
   }
   if (dropDown) {
     strokeWeight(1);
-    if (hklik) {
+     if (hklik) {
       dropdown(dropdownx, dropdowny, new String[]{"Slet opgave", "Ny opgave over", "Ny opgave under"});
     } else {
       dropdown(dropdownx, dropdowny-int(ganttScroll.Scroll), new String[]{"Passiv", "Aktiv", "Fuldført"});
