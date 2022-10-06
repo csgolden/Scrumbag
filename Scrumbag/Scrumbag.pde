@@ -61,7 +61,7 @@ void setup() {
   edit.hide();
   //selectOutput("Select a file to write to:", "saveAs");   //gem som done
   //save();  //gem ændringerne i det åbne projekt
-myChart = cp5.addChart("d") 
+myChart = cp5.addChart("") 
 .setPosition(width-326, height-319)
     .setSize(326, 319)
     .setView(Chart.LINE) // use Chart.LINE, Chart.PIE, Chart.AREA, Chart.BAR_CENTERED
@@ -226,5 +226,6 @@ void mouseWheel(MouseEvent event) {
 
 
 void mouseDragged() {
+ 
  BChart.resize();
 }
