@@ -160,8 +160,8 @@ void nyOpgave(int index) {
   opgaveNavn = splice(opgaveNavn, "", index-1);
   startDato = splice(startDato, "", index-1);
   slutDato = splice(slutDato, "", index-1);
-  ansvarlig = splice(ansvarlig, "", index-1);
-  prioritet = splice(prioritet, "", index-1);
+  ansvarlig = splice(ansvarlig, holdet[0], index-1);
+  prioritet = splice(prioritet, "Lav", index-1);
   antalTimer = splice(antalTimer, "", index-1);
   status = splice(status, 0, index-1);
 }

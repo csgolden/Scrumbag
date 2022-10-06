@@ -13,7 +13,7 @@ String[] antalTimer = {"0", " ", " "};
 String[] timerBrugt = {"2", "0", "0"};
 String[] holdet = {"Lukas", "Jacob", "etc"};
 
-String[][] coolioso = {opgaveNavn, ansvarlig, startDato, slutDato, antalTimer, timerBrugt, prioritet};
+String[][] coolioso = {opgaveNavn, ansvarlig, startDato, slutDato, antalTimer, timerBrugt, prioritet, holdet};
 String projektnavn = "et eller andet";
 String startdato = "";
 String slutdato = "";
@@ -70,12 +70,11 @@ myChart = cp5.addChart("")
     .setMoveable(true)
     .setRange(0, 60)
     .setColorBackground(#FFFFFF)
-.hide();
-
+    .hide();
 }
 void draw() {
   //println("jeg er her - ", prioritet[0]);
-  coolioso = new String[][]{opgaveNavn, ansvarlig, startDato, slutDato, antalTimer, timerBrugt, prioritet};
+  coolioso = new String[][]{opgaveNavn, ansvarlig, startDato, slutDato, antalTimer, timerBrugt, prioritet, holdet};
   strokeWeight(1);
   //println(state);
   if (state==0) {
@@ -87,8 +86,10 @@ void draw() {
   }
   textSize(12);
 
-BChart.prescence();
-if(state==2){BChart.upData();}
+  BChart.prescence();
+  if (state==2) {
+    BChart.upData();
+  }
 }
 
 void edit(int n) {
@@ -152,7 +153,6 @@ void keyPressed() {
   }
   catch(Exception e) {  // hvis det ville give den error message out of bounds
   }
-  
 }
 
 void mousePressed() {
@@ -224,14 +224,34 @@ void mousePressed() {
       }
     }
     dropDown = false;
-  } else if (state==2) {
 
     //------------------------------------------------------------------------------------------------------------------
-
+  } else if (state==2) {
+    
+    for (int i  = 0; i<holdet.length; i++) {
+      if (mouseY>102+i*27&&mouseY<102+27+27*i&&mouseX>953) {
+        println(i);
+        //klikkede på tidstabel
+        println("det virker");
+        if (mouseButton==RIGHT) {
+          if (dropDown) {
+            dropDown = false;
+          } else {
+            hklik = true;
+            dropDown = true;
+            dropdownx = mouseX;
+            dropdowny = mouseY;
+            selected = new PVector(7, i);
+          }
+          return;
+        }
+        selected = new PVector(7, i);
+      }
+    }
     for (int x = 0; x<muligheder.length; x++) {
       if (dropDown) {
         if (hklik) {
-          if (mouseY>dropdowny+26*x&&mouseY<dropdowny+26+26*x&&mouseX>dropdownx&&mouseX<dropdownx+105) {
+          if (mouseY>dropdowny+26*x&&mouseY<dropdowny+26+26*x&&mouseX>dropdownx&&mouseX<dropdownx+105&&mouseX<953) {
             hklik = false;
             if (x==0) {
               if (opgaveNavn.length!=1) {
@@ -244,6 +264,33 @@ void mousePressed() {
               nyOpgave(int(selected.y)+1);
             } else {
               nyOpgave(int(selected.y)+2);
+            }
+
+            dropDown = false;
+            return;
+          } else if (mouseY>dropdowny+27*x&&mouseY<dropdowny+27+27*x&&mouseX>dropdownx&&mouseX<dropdownx+105) {
+            println(x);
+            //do the things
+            if (x==0) {
+              if (holdet.length==2) {
+                if (selected.y==0) {
+                  holdet = subset(holdet, 1, 1);
+                } else {
+                  holdet = subset(holdet, 0, 1);
+                }
+              }
+              if (holdet.length>=3) {
+                if (selected.y==0) {
+                  holdet = subset(holdet, 1);
+                } else if (selected.y==holdet.length-1) {
+                  holdet = subset(holdet, 0, holdet.length-1 );
+                } else {
+                  holdet = concat(subset(holdet, 0, int(selected.y)), subset(holdet, int(selected.y)+1, holdet.length-(int(selected.y)+1)));
+                }
+              }
+            } else if (x==1) {
+              holdet = append(holdet, "nyperson");
+              timerBrugt = append(timerBrugt, "0");
             }
 
             dropDown = false;
@@ -269,15 +316,19 @@ void mousePressed() {
         }
       }
     }
+
+
     hklik = false;
     for (int i  = 0; i<opgaveNavn.length; i++) {
-      if (mouseButton == RIGHT&&mouseY>33*i-agileScroll.Scroll+start&&mouseY<33*i-agileScroll.Scroll+start+33&&mouseX<953) {
-        hklik = true;
-        dropDown = true;
-        dropdownx = mouseX;
-        dropdowny = mouseY;
-        selected = new PVector(5, i);
-        return;
+      if (mouseButton == RIGHT) {
+        if (mouseY>33*i-agileScroll.Scroll+start&&mouseY<33*i-agileScroll.Scroll+start+33&&mouseX<953) {
+          hklik = true;
+          dropDown = true;
+          dropdownx = mouseX;
+          dropdowny = mouseY;
+          selected = new PVector(5, i);
+          return;
+        }
       } else if (mouseY>33*i-agileScroll.Scroll+start&&mouseY<33*i-agileScroll.Scroll+start+33&&mouseX<385) {
         //klikkede på opgaveNavn
         selected = new PVector(0, i);
@@ -316,7 +367,7 @@ void mousePressed() {
         return;
       } else if (mouseY>33*i-agileScroll.Scroll+start&&mouseY<33*i-agileScroll.Scroll+start+33&&mouseX>822&&mouseX<930) {
         selected = new PVector(3, i);
-      }  else if (mouseY>33*i-ganttScroll.Scroll+start&&mouseY<33*i-ganttScroll.Scroll+start+33&&mouseX>1153&&mouseX<width-20) {
+      } else if (mouseY>33*i-ganttScroll.Scroll+start&&mouseY<33*i-ganttScroll.Scroll+start+33&&mouseX>1153&&mouseX<width-20) {
         //klikkede på status
         if (dropDown) {
           dropDown = false;
