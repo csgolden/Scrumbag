@@ -105,16 +105,16 @@ void opgaverGant() {
     }
 
     try {
-      int[] begin = int(split(startDato[i], '/'));
+      int[] begin = int(splitTokens(startDato[i], "/-."));
       Date begynd = new Date(begin[2]-1900, begin[1]-1, begin[0]);
 
-      int[] færdig = int(split(slutDato[i], '/'));
+      int[] færdig = int(splitTokens(slutDato[i], "/-."));
       Date slut = new Date(færdig[2]-1900, færdig[1]-1, færdig[0]);
 
-      int[] beginP = int(split(startdato, '/'));
+      int[] beginP = int(splitTokens(startdato, "/-."));
       Date begyndP =new Date(beginP[2]-1900, beginP[1]-1, beginP[0]);
 
-      int[] færdigP = int(split(slutdato, '/'));
+      int[] færdigP = int(splitTokens(slutdato, "/-."));
       Date slutP =new Date(færdigP[2]-1900, færdigP[1]-1, færdigP[0]);
 
 
