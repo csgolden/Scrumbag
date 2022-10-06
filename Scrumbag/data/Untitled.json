@@ -1,12 +1,34 @@
 {
-  "Todo": [{
-    "slutdato": " ",
-    "prioritet": " ",
-    "startdato": " ",
-    "antal timer": 0,
-    "ansvarlig": " ",
-    "opgaven": "test",
-    "status": 0
-  }],
-  "projektnavn": "Untitled"
+  "slutdato": "",
+  "Todo": [
+    {
+      "slutdato": "",
+      "prioritet": "Lav",
+      "startdato": "",
+      "antal timer": "4",
+      "ansvarlig": "Lukas",
+      "opgaven": "lukas",
+      "status": 0
+    },
+    {
+      "slutdato": "",
+      "prioritet": "",
+      "startdato": "",
+      "antal timer": "2",
+      "ansvarlig": "Jacob",
+      "opgaven": "",
+      "status": 0
+    },
+    {
+      "slutdato": "",
+      "prioritet": "",
+      "startdato": "",
+      "antal timer": "",
+      "ansvarlig": "",
+      "opgaven": "",
+      "status": 0
+    }
+  ],
+  "projektnavn": "Untitled",
+  "startdato": ""
 }
