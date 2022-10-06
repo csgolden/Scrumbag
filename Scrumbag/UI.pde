@@ -1,7 +1,7 @@
 import java.util.Date;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
-
+float daysPro=0;
 void Forside() {
   b.show();
   edit.hide();
@@ -129,7 +129,7 @@ void opgaverGant() {
       long timeStart = Math.abs(begyndInMs-begyndPInMs);
 
       float daysOpg = TimeUnit.DAYS.convert(timeOpg, TimeUnit.MILLISECONDS);
-      float daysPro = TimeUnit.DAYS.convert(timePro, TimeUnit.MILLISECONDS);
+            daysPro = TimeUnit.DAYS.convert(timePro, TimeUnit.MILLISECONDS);
       float daysStart = TimeUnit.DAYS.convert(timeStart, TimeUnit.MILLISECONDS);
 
       float len = daysOpg/daysPro;

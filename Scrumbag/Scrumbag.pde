@@ -86,8 +86,8 @@ void draw() {
     Agile();
   }
   textSize(12);
-
 BChart.prescence();
+
 if(state==2){BChart.upData();}
 }
 
@@ -156,7 +156,6 @@ void keyPressed() {
 }
 
 void mousePressed() {
-
   if (state==1) {
     //width-20, start-1, 19
 
@@ -331,6 +330,7 @@ void mousePressed() {
     }
   }
   dropDown = false;
+//opgaverGant();
 }
 
 void mouseWheel(MouseEvent event) {

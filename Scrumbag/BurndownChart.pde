@@ -55,7 +55,11 @@ class BurnUp {
   }}}
   void upData() {
     // TTT[0]=hvad end matematikken giver;
+try{TT=expand(TT,int(daysPro));
+for(int i=0; i<daysPro;i++){
+  
 
+}
     myChart.setData("TTT", TTT);
     myChart.setData("TT", TT);
     myChart.setData("IT", IT);
@@ -65,6 +69,9 @@ class BurnUp {
     myChart.setColors("TTT", #FC3700);
     myChart.setColors("TT", #FCCB00);
   }
+catch(Exception e){
+}
+}
   void BurnUP() {
 
     IT[0]=0;
