@@ -130,9 +130,9 @@ void bar(int n) {
 void keyPressed() {
   Float[] lengths = new Float[8];
   if (state == 1) {
-    lengths = new Float[]{385.0, 0.0, 106.5, 106.5, 0.0, 0.0, 0.0, 0.0};
+    lengths = new Float[]{385.0, 0.0, 106.5, 106.5, 0.0, 0.0, 0.0,122.0};
   } else if (state == 2) {
-    lengths = new Float[]{385.0, 0.0, 0.0, 109.0, 102.0, 0.0, 0.0, 0.0};
+    lengths = new Float[]{385.0, 0.0, 0.0, 109.0, 102.0, 0.0, 0.0, 122.0};
   }
   if (selected.x>coolioso.length) {
     return;

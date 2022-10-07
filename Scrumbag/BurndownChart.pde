@@ -74,38 +74,10 @@ catch(Exception e){
 }
   void BurnUP() {
 
-    IT[0]=0;
-    IT[1]=1;
-    IT[2]=2;
-    IT[3]=3;
-    IT[4]=4;
-    IT[5]=5;
-    IT[6]=6;
-    IT[7]=7;
-    IT[8]=8;
-    IT[9]=9;
 
-    TTT[0]=20;
-    TTT[1]=30;
-    TTT[2]=40;
-    TTT[3]=50;
-    TTT[4]=60;
-    TTT[5]=60;
-    TTT[6]=50;
-    TTT[7]=40;
-    TTT[8]=0;
-    TTT[9]=60;
 
-    TT[0]=18;
-    TT[1]=28;
-    TT[2]=38;
-    TT[3]=0;
-    TT[4]=58;
-    TT[5]=8;
-    TT[6]=48;
-    TT[7]=38;
-    TT[8]=2;
-    TT[9]=58;
+
+
     myChart.addDataSet("IT");
     myChart.addDataSet("TTT");
     myChart.addDataSet("TT");
