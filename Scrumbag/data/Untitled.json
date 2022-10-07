@@ -12,7 +12,7 @@
     },
     {
       "slutdato": "",
-      "prioritet": "",
+      "prioritet": "Mellem",
       "startdato": "",
       "antal timer": "2",
       "ansvarlig": "Jacob",
@@ -21,10 +21,10 @@
     },
     {
       "slutdato": "",
-      "prioritet": "",
+      "prioritet": "Høj",
       "startdato": "",
       "antal timer": "",
-      "ansvarlig": "",
+      "ansvarlig": "Lukas",
       "opgaven": "",
       "status": 0
     }
