@@ -166,13 +166,13 @@ void Agile() {
     if (hklik) {
       if(mouseX>953){
       dropdown(dropdownx, dropdowny, new String[]{"Fjern Medlem", "Nyt medlem"});
+    } else{
+      dropdown(dropdownx, dropdowny, new String[]{"Slet opgave", "Ny opgave over", "Ny opgave under"});
     }
     } else if (selected.x==6) {
       dropdown(dropdownx, dropdowny-int(agileScroll.Scroll), new String[]{"Lav", "Mellem", "Høj"});
     } else if (selected.x==1) {
       dropdown(dropdownx, dropdowny-int(agileScroll.Scroll), holdet);
-    } else{
-      dropdown(dropdownx, dropdowny, new String[]{"Slet opgave", "Ny opgave over", "Ny opgave under"});
-    }
+    } 
   }
 }

@@ -132,7 +132,7 @@ void keyPressed() {
   if (state == 1) {
     lengths = new Float[]{385.0, 0.0, 106.5, 106.5, 0.0, 0.0, 0.0,122.0};
   } else if (state == 2) {
-    lengths = new Float[]{385.0, 0.0, 0.0, 109.0, 102.0, 0.0, 0.0, 122.0};
+    lengths = new Float[]{385.0, 0.0, 0.0, 109.0, 102.0, 68.0, 0.0, 122.0};
   }
   if (selected.x>coolioso.length) {
     return;
@@ -141,7 +141,9 @@ void keyPressed() {
   textSize(14);
   try {
     if ((key >= '!' && key <= 'z'|| key == ' '||key >= 128 && key <= 255)&&key!='$'&&int(textWidth(coolioso[int(selected.x)][int(selected.y)]))+17<lengths[int(selected.x)]-10) {  // 12865
-
+      if(selected.x==5&&!(key >= '0' && key <= '9')){
+        return;
+      }
       coolioso[int(selected.x)][int(selected.y)] = coolioso[int(selected.x)][int(selected.y)] + key;
       // lånt kode slutter
     } else if (key==BACKSPACE) {  //   opsummering: delete key
