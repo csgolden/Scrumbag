@@ -156,6 +156,7 @@ void keyPressed() {
 }
 
 void mousePressed() {
+  println(selected.x, " ", selected.y);
   if (state==1) {
     //width-20, start-1, 19
 

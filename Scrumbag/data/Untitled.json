@@ -1,34 +1,34 @@
 {
-  "slutdato": "",
+  "slutdato": "26.03.2022",
   "Todo": [
     {
-      "slutdato": "",
+      "slutdato": "26.02.2022",
       "prioritet": "Lav",
-      "startdato": "",
+      "startdato": "25.02.2022",
       "antal timer": "4",
-      "ansvarlig": "Lukas",
-      "opgaven": "lukas",
+      "ansvarlig": "Frederik",
+      "opgaven": "lukas do the boingo doingo",
       "status": 0
     },
     {
-      "slutdato": "",
+      "slutdato": "13.03.2022",
       "prioritet": "Mellem",
-      "startdato": "",
+      "startdato": "01.03.2022",
       "antal timer": "2",
       "ansvarlig": "Jacob",
-      "opgaven": "",
-      "status": 0
+      "opgaven": "se x 2 releasedate",
+      "status": 1
     },
     {
-      "slutdato": "",
+      "slutdato": "26.03.2022",
       "prioritet": "Høj",
-      "startdato": "",
-      "antal timer": "",
-      "ansvarlig": "Lukas",
-      "opgaven": "",
-      "status": 0
+      "startdato": "29.02.2022",
+      "antal timer": "10",
+      "ansvarlig": "Frederik",
+      "opgaven": "my name is skylar white YO",
+      "status": 2
     }
   ],
   "projektnavn": "Untitled",
-  "startdato": ""
+  "startdato": "25.02.2022"
 }
